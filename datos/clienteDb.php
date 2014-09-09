@@ -1,5 +1,6 @@
 <?php
 require_once('datos/Db.php');
+require_once('entidades/cliente.php');
 
 class ClienteDb extends Db{
 
@@ -19,15 +20,12 @@ class ClienteDb extends Db{
 
     public function getAll(){
         
-        $sql = "SELECT 
-                  c.id, 
-                  c.apellido, 
-                  c.nombre AS nombreCliente 
+        $sql = "SELECT c.* 
                 FROM cliente AS c
                 ORDER BY c.apellido ASC, c.nombre ASC";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
-        $array = $this->resourceToArray($result);
+        $array = $this->resourceToObjects($result,'Cliente');
         $result->free();
         return $array;
     }

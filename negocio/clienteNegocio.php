@@ -1,5 +1,7 @@
 <?php
+/*Clase Datos*/
 require_once('datos/clienteDb.php');
+
 class clienteNegocio{
   
   public function listar(){

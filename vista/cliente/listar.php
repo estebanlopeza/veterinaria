@@ -7,8 +7,8 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Nombre</th>
             <th>Apellido</th>
+            <th>Nombre</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -20,13 +20,13 @@
             foreach( $arrayClientes as $cliente ){
           ?>
               <tr>
-                <td><?php echo $cliente['id']?></td>
-                <td><?php echo $cliente['apellido']?></td>
-                <td><?php echo $cliente['nombreCliente']?></td>
+                <td><?php echo $cliente->getId();?></td>
+                <td><?php echo $cliente->getApellido();?></td>
+                <td><?php echo $cliente->getNombre();?></td>
                 <td>
                   <a href="#" data-toggle="tooltip" title="Editar cliente"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
                   <a href="#" data-toggle="tooltip" title="Eliminar cliente"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
-                  <a href="?modulo=mascota&accion=listar&idCliente=<?php echo $cliente['id'] ?>" data-toggle="tooltip" title="Listar mascotas"><span class="glyphicon glyphicon-list"></span></a>
+                  <a href="?modulo=mascota&accion=listar&idCliente=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Listar mascotas"><span class="glyphicon glyphicon-list"></span></a>
                 </td>
               </tr>
           <?php

@@ -19,9 +19,9 @@
 
     <div class="container">
 
-      <form class="form-signin"  action="checkLogin.php" method="post" role="form">
+      <form class="form-signin" action="checkLogin.php" method="post" role="form">
         <h2 class="form-signin-heading">Veterinaria RdA</h2>
-        <input type="text" class="form-control" placeholder="Usuario" name="usuario" required autofocus>
+        <input type="email" class="form-control" placeholder="Usuario" name="usuario" required autofocus>
         <input type="password" class="form-control" placeholder="Contrase&ntilde;a" name="password" required>
         <p><a href="#"> Olvid&eacute; mi contrase&ntilde;a</a></p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>

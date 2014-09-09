@@ -28,5 +28,13 @@ abstract class Db {
         }
         return $array;
     }
+    
+    protected function resourceToObjects($res,$class){
+        $array = array();
+        while ($row = $res->fetch_assoc()) {
+            $array[] = new $class($row);
+        }
+        return $array;
+    }
 }
 ?>
