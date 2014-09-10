@@ -3,48 +3,14 @@
         <h1>Mascota <button type="button" class="btn btn-primary btn-sm">Agregar</button></h1>
       </div>
 
-      <table class="table table-striped table-bordered">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Apellido</th>
-            <th>Nombre</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $clienteNegocio = new clienteNegocio();
-          $arrayClientes = $clienteNegocio->listar();
-          if( count($arrayClientes) > 0 ){
-            foreach( $arrayClientes as $cliente ){
-          ?>
-              <tr>
-                <td><?php echo $cliente->getId();?></td>
-                <td><?php echo $cliente->getApellido();?></td>
-                <td><?php echo $cliente->getNombre();?></td>
-                <td>
-                  <a href="#" data-toggle="tooltip" title="Editar cliente"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-                  <a href="#" data-toggle="tooltip" title="Eliminar cliente"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
-                  <a href="?modulo=mascota&accion=listar&idCliente=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Listar mascotas"><span class="glyphicon glyphicon-list"></span></a>
-                </td>
-              </tr>
-          <?php
-            }
-          }else{
-          ?>
-          <tr>
-            <td colspan="4">No se encontraron resultados</td>
-          </tr>
-          <?php
-          }
-          ?>
-        </tbody>
-      </table>
+      <?php
+      $mascotaNegocio = new mascotaNegocio();
+      $mascota = $mascotaNegocio->recuperar($_GET['id']);
+      ?>
         <form role="form">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $mascota->getNombre();?>">
             </div>
             <div class="form-group">
                 <label for="fechaNac">Fecha de nacimiento</label>
