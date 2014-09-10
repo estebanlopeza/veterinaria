@@ -3,7 +3,7 @@
 class Alerta{
 
 	private $fecha;
-
+ 
 	public function getFecha(){
 		return this->fecha;
 	}
