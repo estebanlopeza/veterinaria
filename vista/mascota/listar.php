@@ -8,25 +8,24 @@
           <tr>
             <th>Id</th>
             <th>Nombre</th>
-            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           <?php
-          $clienteNegocio = new clienteNegocio();
-          $arrayClientes = $clienteNegocio->listar();
-          if( count($arrayClientes) > 0 ){
-            foreach( $arrayClientes as $cliente ){
+          $mascotaNegocio = new mascotaNegocio();
+          $arrayMascotas = $mascotaNegocio->listar();
+          if( count($arrayMascotas) > 0 ){
+            foreach( $arrayMascotas as $mascota ){
           ?>
               <tr>
-                <td><?php echo $cliente['id']?></td>
-                <td><?php echo $cliente['apellido']?></td>
-                <td><?php echo $cliente['nombreCliente']?></td>
+                <td><?php echo $mascota->getId();?></td>
+                <td><?php echo $mascota->getNombre();?></td>
+                <td><?php echo $mascota->getFechaNac();?></td>
                 <td>
-                  <a href="#" data-toggle="tooltip" title="Editar cliente"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-                  <a href="#" data-toggle="tooltip" title="Eliminar cliente"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
-                  <a href="#" data-toggle="tooltip" title="Listar mascotas"><span class="glyphicon glyphicon-list"></span></a>
+                  <a href="#" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                  <a href="#" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
                 </td>
               </tr>
           <?php

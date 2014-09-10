@@ -2,6 +2,39 @@
 
 class Mascota{
 
+	private $id;
+
+	public function getId(){
+		return $this->id;
+	}
+	
+	public function setId($id){
+		$this->id = $id;
+	}
+
+
+	private $id_cliente;
+
+	public function getIdCliente(){
+	return $this->id_cliente;
+	}
+	
+	public function setIdCliente($id_cliente){
+	$this->id_cliente = $id_cliente;
+	}
+
+
+	private $id_raza;
+
+	public function getIdRaza(){
+	return $this->id_raza;
+	}
+	
+	public function setIdRaza($id_raza){
+	$this->id_raza = $id_raza;
+	}
+
+
 	private $nombre;
 
 	public function getNombre(){
@@ -44,6 +77,16 @@ class Mascota{
 	public function setPelaje($pelaje){
 		$this->pelaje = $pelaje;
 	}
+
+    public function __construct($array){
+    $this->setId($array['id']); 
+    $this->setIdCliente($arra['id_cliente']);
+    $this->setIdRaza($arra['id_raza']);
+    $this->setNombre($array['nombre']);
+    $this->setFechaNac($array['fechaNac']);
+    $this->setSexo($array['sexo']);
+    $this->setPelaje($array['pelaje']);
+    }
 
 }
 
