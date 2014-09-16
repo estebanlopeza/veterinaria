@@ -80,8 +80,8 @@ class Mascota{
 
     public function __construct($array){
     $this->setId($array['id']); 
-    $this->setIdCliente($arra['id_cliente']);
-    $this->setIdRaza($arra['id_raza']);
+    $this->setIdCliente($array['id_cliente']);
+    $this->setIdRaza($array['id_raza']);
     $this->setNombre($array['nombre']);
     $this->setFechaNac($array['fechaNac']);
     $this->setSexo($array['sexo']);

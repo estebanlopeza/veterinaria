@@ -10,18 +10,20 @@
         <form role="form">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $mascota->getNombre();?>">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $mascota->getNombre();?>" >
             </div>
             <div class="form-group">
                 <label for="fechaNac">Fecha de nacimiento</label>
                 <p class="help-block">Formato dd/mm/yyyy.</p>
-                <input type="text" class="form-control" id="fechaNac" placeholder="dd/mm/yyyy">
+                <input type="text" class="form-control" id="fechaNac" name="fechaNac" placeholder="dd/mm/yyyy" value="<?php echo $mascota->getFechaNac();?>">
             </div>
             <div class="form-group">
                 <label for="especie">Especie</label>
                 <select class="form-control" name="especie">
                     <option value="1">Perro</option>
                     <option value="2">Gato</option>
+                    <option value="2">Ave</option>
+                    <option value="2">Rana</option>
                 </select>
             </div>
             <div class="form-group">
@@ -42,12 +44,7 @@
                 <label for="pelaje">Pelaje</label>
                 <input type="text" class="form-control" id="pelaje" placeholder="Pelaje">
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Check me out
-                </label>
-            </div>
             
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">Enviar</button>
         </form>
     </div>
