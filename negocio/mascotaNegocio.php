@@ -8,6 +8,11 @@ class mascotaNegocio{
       $db = new mascotaDb();
       return $db->getAll($_GET['idCliente']);
   }
+
+  public function recuperar(){
+      $db = new mascotaDb();
+      return $db->getOne($_GET['id']);
+  }
 }
 
 
