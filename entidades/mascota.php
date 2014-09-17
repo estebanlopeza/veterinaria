@@ -35,6 +35,17 @@ class Mascota{
 	}
 
 
+	private $id_especie;
+
+	public function getIdEspecie(){
+	return $this->id_especie;
+	}
+	
+	public function setIdEspecie($id_especie){
+	$this->id_especie = $id_especie;
+	}
+
+
 	private $nombre;
 
 	public function getNombre(){
@@ -82,6 +93,7 @@ class Mascota{
     $this->setId($array['id']); 
     $this->setIdCliente($array['id_cliente']);
     $this->setIdRaza($array['id_raza']);
+    $this->setIdEspecie($array['id_especie']);
     $this->setNombre($array['nombre']);
     $this->setFechaNac($array['fechaNac']);
     $this->setSexo($array['sexo']);

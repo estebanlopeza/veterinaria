@@ -7,9 +7,10 @@ class MascotaDb extends Db{
     public function getOne($id){
         global $mysqli;
         
-        $sql = "SELECT * 
+        $sql = "SELECT m.*, r.id_especie
                 FROM mascota AS m
-                WHERE id = " . $id . "
+                INNER JOIN raza AS r ON m.id_raza = r.id
+                WHERE r.id = " . $id . "
                 LIMIT 1";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
