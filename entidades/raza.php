@@ -22,9 +22,20 @@ class Raza{
 		$this->nombre = $nombre;
 	}
 
+	private $idEspecie;
+
+	public function getIdEspecie(){
+		return $this->idEspecie;
+	}
+
+	public function setIdEspecie($idEspecie){
+		$this->idEspecie = $idEspecie;
+	}
+
 	public function __construct($array){
 		$this->setId($array['id']);
 	    $this->setNombre($array['nombre']);
+	    $this->setIdEspecie($array['id_especie']);
     }
 
 }

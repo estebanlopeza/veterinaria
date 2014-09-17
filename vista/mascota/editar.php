@@ -9,6 +9,9 @@
       require_once('negocio/especieNegocio.php');
       $especieNegocio = new especieNegocio();
       $arrayEspecie = $especieNegocio->listar();
+      require_once('negocio/razaNegocio.php');
+      $razaNegocio = new razaNegocio();
+      $arrayRaza = $razaNegocio->listar();
       ?>
         <form role="form">
             <div class="form-group">
@@ -37,8 +40,16 @@
             <div class="form-group">
                 <label for="raza">Raza</label>
                 <select class="form-control" name="raza">
-                    <option value="1">Caniche</option>
-                    <option value="2">Doberman</option>
+                    <?php
+                    foreach ($arrayRaza as $raza) {
+                        echo '<option value="'. $raza->getId() .'" ';
+                        if($raza->getId() == $mascota->getIdRaza()){
+                            echo "selected ";
+                        }
+                        echo 'data-id-especie="'.$raza->getIdEspecie().'"';
+                        echo '>' . $raza->getNombre() . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="form-group">
