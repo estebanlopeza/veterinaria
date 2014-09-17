@@ -6,6 +6,9 @@
       <?php
       $mascotaNegocio = new mascotaNegocio();
       $mascota = $mascotaNegocio->recuperar($_GET['id']);
+      require_once('negocio/especieNegocio.php');
+      $especieNegocio = new especieNegocio();
+      $arrayEspecie = $especieNegocio->listar();
       ?>
         <form role="form">
             <div class="form-group">
@@ -20,10 +23,15 @@
             <div class="form-group">
                 <label for="especie">Especie</label>
                 <select class="form-control" name="especie">
-                    <option value="1">Perro</option>
-                    <option value="2">Gato</option>
-                    <option value="2">Ave</option>
-                    <option value="2">Rana</option>
+                    <?php
+                    foreach ($arrayEspecie as $especie) {
+                        echo '<option value="'. $especie->getId() .'" ';
+                        if($especie->getId() == $mascota->getIdEspecie()){
+                            echo "selected";
+                        }
+                        echo '>' . $especie->getNombre() . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
             <div class="form-group">
