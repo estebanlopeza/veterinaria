@@ -5,33 +5,33 @@ class Servicio{
 	private $nombre;
 
 	public function getNombre(){
-		return this->nombre;
+		return $this->nombre;
 	}
 
 	public function setNombre($nombre){
-		this->nombre = $nombre;
+		$this->nombre = $nombre;
 	}
 
 
 	private $descripcion;
 
 	public function getDescripcion(){
-		return this->descripcion;
+		return $this->descripcion;
 	}
 
 	public function setDescripcion($descripcion){
-		this->descripcion = $descripcion;
+		$this->descripcion = $descripcion;
 	}
 
 
 	private $nroGavet;
 
 	public function getNroGavet(){
-		return this->nroGavet;
+		return $this->nroGavet;
 	}
 
 	public function setDescripcion($nroGavet){
-		this->nroGavet = $nroGavet;
+		$this->nroGavet = $nroGavet;
 	}
 
 }
