@@ -55,13 +55,13 @@
             <div class="form-group">
                 <label for="sexo">Sexo</label>
                 <select class="form-control" name="sexo">
-                    <option value="macho">Macho</option>
-                    <option value="hembra">Hembra</option>
+                    <option value="macho" <?php if($mascota->getSexo() == 'macho') {echo "selected";} ?>  >Macho</option>
+                    <option value="hembra" <?php if($mascota->getSexo() == 'hembra') {echo "selected";} ?> >Hembra</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="pelaje">Pelaje</label>
-                <input type="text" class="form-control" id="pelaje" placeholder="Pelaje">
+                <input type="text" class="form-control" id="pelaje" placeholder="Pelaje" value="<?php echo $mascota->getPelaje();?>"  >
             </div>
             
             <button type="submit" class="btn btn-default">Enviar</button>
