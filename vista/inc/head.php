@@ -32,15 +32,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Listar clientes</a></li>
-                <li><a href="#">Agregar cliente</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mascotas <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Listar mascota</a></li>
-                <li><a href="#">Agregar mascota</a></li>
+                <li><a href="?modulo=cliente&accion=listar">Listar clientes</a></li>
+                <li><a href="?modulo=cliente&accion=agregar">Agregar cliente</a></li>
               </ul>
             </li>
             <li class="dropdown">

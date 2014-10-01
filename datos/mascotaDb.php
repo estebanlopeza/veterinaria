@@ -9,8 +9,9 @@ class MascotaDb extends Db{
         
         $sql = "SELECT m.*, r.id_especie
                 FROM mascota AS m
-                INNER JOIN raza AS r ON m.id_raza = r.id
-                WHERE r.id = " . $id . "
+                INNER JOIN raza AS r 
+                ON m.id_raza = r.id
+                WHERE m.id = " . $id . "
                 LIMIT 1";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
@@ -31,6 +32,38 @@ class MascotaDb extends Db{
         $array = $this->resourceToObjects($result,'Mascota');
         $result->free();
         return $array;
+    }
+
+    public function update($mascota){
+        
+        $sql = "UPDATE mascota SET id_raza = " . $mascota->getIdRaza() . ", 
+                                   nombre = '" . $mascota->getNombre() . "',
+                                   fechaNac = '" . $mascota->getFechaNac() . "',
+                                   sexo = '" . $mascota->getSexo() . "',
+                                   pelaje = '" . $mascota->getPelaje() . "' 
+                WHERE id = " . $mascota->getId();
+        $this->mysqli->query($sql) or die("Error ");
+        return $mascota;
+    }
+
+    public function insert($mascota){
+        
+        $sql = "INSERT INTO mascota (id_cliente,
+                                     id_raza, 
+                                     nombre,
+                                     fechaNac,
+                                     sexo,
+                                     pelaje)
+                VALUES ( " . $mascota->getIdCliente() . ", 
+                         " . $mascota->getIdRaza() . ", 
+                        '" . $mascota->getNombre() . "',
+                        '" . $mascota->getFechaNac() . "',
+                        '" . $mascota->getSexo() . "',
+                        '" . $mascota->getPelaje() . "' )";
+
+        $this->mysqli->query($sql) or die("Error ");
+        $mascota->setId( $this->mysqli->insert_id );
+        return $mascota;
     }
 }
 ?>

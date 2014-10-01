@@ -89,17 +89,20 @@ class Mascota{
 		$this->pelaje = $pelaje;
 	}
 
-    public function __construct($array){
-    $this->setId($array['id']); 
-    $this->setIdCliente($array['id_cliente']);
-    $this->setIdRaza($array['id_raza']);
-    $this->setIdEspecie($array['id_especie']);
-    $this->setNombre($array['nombre']);
-    $this->setFechaNac($array['fechaNac']);
-    $this->setSexo($array['sexo']);
-    $this->setPelaje($array['pelaje']);
+    public function __construct($array = null){
+    if($array){
+	    if($array['id']){
+	    	$this->setId($array['id']);
+	    }
+	    $this->setIdCliente($array['id_cliente']);
+	    $this->setIdRaza($array['id_raza']);
+	    $this->setIdEspecie($array['id_especie']);
+	    $this->setNombre($array['nombre']);
+	    $this->setFechaNac($array['fechaNac']);
+	    $this->setSexo($array['sexo']);
+	    $this->setPelaje($array['pelaje']);
+	    }
     }
-
 }
 
 ?>

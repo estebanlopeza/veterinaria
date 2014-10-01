@@ -1,8 +1,8 @@
     <div class="container">
       <div class="page-header">
-        <h1>Mascotas <button type="button" class="btn btn-primary btn-sm">Agregar</button></h1>
+        <h1>Mascotas <button type="button" class="btn btn-primary btn-sm" onclick="document.location='?modulo=mascota&accion=editar&idCliente=<?php echo $_GET['idCliente'];?>'">Agregar</button></h1>
       </div>
-
+      <?php echo Util::getMsj(); ?>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -24,8 +24,8 @@
                 <td><?php echo $mascota->getNombre();?></td>
                 <td><?php echo $mascota->getFechaNac();?></td>
                 <td>
-                  <a href="#" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-                  <a href="#" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
+                  <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                  <a href="?modulo=mascota&accion=eliminar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
                 </td>
               </tr>
           <?php

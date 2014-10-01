@@ -4,8 +4,11 @@
       </div>
 
       <?php
-      $mascotaNegocio = new mascotaNegocio();
-      $mascota = $mascotaNegocio->recuperar($_GET['id']);
+      if ($_GET['id']) {
+          $mascota = $mascotaNegocio->recuperar($_GET['id']);
+      }else{
+        $mascota = new mascota();
+      }
       require_once('negocio/especieNegocio.php');
       $especieNegocio = new especieNegocio();
       $arrayEspecie = $especieNegocio->listar();
@@ -13,19 +16,21 @@
       $razaNegocio = new razaNegocio();
       $arrayRaza = $razaNegocio->listar();
       ?>
-        <form role="form">
+        <form role="form" method="post">
+            <input type="hidden" name="id" value="<?php echo $mascota->getId();?>" >
+            <input type="hidden" name="id_cliente" value="<?php echo $_GET['idCliente'];?>" >
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $mascota->getNombre();?>" >
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $mascota->getNombre();?>" >
             </div>
             <div class="form-group">
                 <label for="fechaNac">Fecha de nacimiento</label>
                 <p class="help-block">Formato dd/mm/yyyy.</p>
-                <input type="text" class="form-control" id="fechaNac" name="fechaNac" placeholder="dd/mm/yyyy" value="<?php echo $mascota->getFechaNac();?>">
+                <input type="text" class="form-control" id="fechaNac" name="fechaNac" placeholder="dd/mm/yyyy" value="<?php echo Util::dbToDate($mascota->getFechaNac());?>">
             </div>
             <div class="form-group">
-                <label for="especie">Especie</label>
-                <select class="form-control" name="especie">
+                <label for="id_especie">Especie</label>
+                <select class="form-control" id="idEspecie" name="id_especie">
                     <?php
                     foreach ($arrayEspecie as $especie) {
                         echo '<option value="'. $especie->getId() .'" ';
@@ -38,8 +43,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="raza">Raza</label>
-                <select class="form-control" name="raza">
+                <label for="id_raza">Raza</label>
+                <select class="form-control" id="idRaza" name="id_raza">
                     <?php
                     foreach ($arrayRaza as $raza) {
                         echo '<option value="'. $raza->getId() .'" ';
@@ -54,14 +59,14 @@
             </div>
             <div class="form-group">
                 <label for="sexo">Sexo</label>
-                <select class="form-control" name="sexo">
+                <select class="form-control" id="sexo" name="sexo">
                     <option value="macho" <?php if($mascota->getSexo() == 'macho') {echo "selected";} ?>  >Macho</option>
                     <option value="hembra" <?php if($mascota->getSexo() == 'hembra') {echo "selected";} ?> >Hembra</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="pelaje">Pelaje</label>
-                <input type="text" class="form-control" id="pelaje" placeholder="Pelaje" value="<?php echo $mascota->getPelaje();?>"  >
+                <input type="text" class="form-control" id="pelaje" name="pelaje" placeholder="Pelaje" value="<?php echo $mascota->getPelaje();?>"  >
             </div>
             
             <button type="submit" class="btn btn-default">Enviar</button>

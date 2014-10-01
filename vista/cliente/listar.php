@@ -24,8 +24,8 @@
                 <td><?php echo $cliente->getApellido();?></td>
                 <td><?php echo $cliente->getNombre();?></td>
                 <td>
-                  <a href="#" data-toggle="tooltip" title="Editar cliente"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-                  <a href="#" data-toggle="tooltip" title="Eliminar cliente"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
+                  <a href="?modulo=cliente&accion=editar&id=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Editar cliente"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                  <a href="?modulo=cliente&accion=eliminar&id=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Eliminar cliente"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
                   <a href="?modulo=mascota&accion=listar&idCliente=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Listar mascotas"><span class="glyphicon glyphicon-list"></span></a>
                 </td>
               </tr>
