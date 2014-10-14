@@ -24,7 +24,7 @@
                 <td><?php echo $mascota->getNombre();?></td>
                 <td><?php echo $mascota->getFechaNac();?></td>
                 <td>
-                  <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                  <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>&idCliente=<?php echo $_GET['idCliente'];?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
                   <a href="?modulo=mascota&accion=eliminar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
                 </td>
               </tr>
