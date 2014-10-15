@@ -12,8 +12,8 @@ class ClienteDb extends Db{
                 WHERE id = " . $id . "
                 LIMIT 1";
 
-        $result = $mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
-        $cliente = $res->fetch_assoc();
+        $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        $cliente = new Cliente( $result->fetch_assoc() );
         $result->free();
         return $cliente;
     }
@@ -28,6 +28,42 @@ class ClienteDb extends Db{
         $array = $this->resourceToObjects($result,'Cliente');
         $result->free();
         return $array;
+    }
+
+    public function update($cliente){
+        
+        $sql = "UPDATE cliente SET nombre = '" . $cliente->getNombre() . "', 
+                                   apellido = '" . $cliente->getApellido() . "',
+                                   tipoDoc = '" . $cliente->getTipoDoc() . "',
+                                   nroDoc = " . $cliente->getNroDoc() . ",
+                                   direccion = '" . $cliente->getDireccion() . "',
+                                   telefono = '" . $cliente->getTelefono() . "', 
+                                   email = '" . $cliente->getEmail() . "'
+                WHERE id = " . $cliente->getId();
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        return $cliente;
+    }
+
+    public function insert($cliente){
+        
+        $sql = "INSERT INTO cliente( nombre,
+                                     apellido,
+                                     tipoDoc,
+                                     nroDoc,
+                                     direccion,
+                                     telefono,
+                                     email)
+                VALUES ('" . $cliente->getNombre() . "', 
+                        '" . $cliente->getApellido() . "', 
+                        '" . $cliente->getTipoDoc() . "',
+                         " . $cliente->getNroDoc() . ",
+                        '" . $cliente->getDireccion() . "',
+                        '" . $cliente->getTelefono() . "',
+                        '" . $cliente->getEmail() . "' )";
+
+        $this->mysqli->query($sql) or die("Error ");
+        $cliente->setId( $this->mysqli->insert_id );
+        return $cliente;
     }
 }
 ?>

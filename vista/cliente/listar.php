@@ -2,7 +2,7 @@
       <div class="page-header">
         <h1>Clientes <button type="button" class="btn btn-primary btn-sm">Agregar</button></h1>
       </div>
-
+      <?php echo Util::getMsj(); ?>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>

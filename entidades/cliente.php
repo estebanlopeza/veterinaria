@@ -88,8 +88,12 @@ class Cliente{
 		$this->email = $email;
 	}
 
-    public function __construct($array){
-        $this->setId($array['id']);
+    public function __construct($array = null){
+        if($array){
+        	if($array['id']){
+        		$this->setId($array['id']);
+        	}
+        
         $this->setTipoDoc($array['tipoDoc']);
         $this->setNroDoc($array['nroDoc']);
         $this->setApellido($array['apellido']);
@@ -97,6 +101,7 @@ class Cliente{
         $this->setDireccion($array['direccion']);
         $this->setTelefono($array['telefono']);
         $this->setEmail($array['email']);
+    	}	
     }
 
 }
