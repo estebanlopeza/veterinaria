@@ -1,6 +1,6 @@
     <div class="container">
       <div class="page-header">
-        <h1>Mascotas <button type="button" class="btn btn-primary btn-sm" onclick="document.location='?modulo=mascota&accion=editar&idCliente=<?php echo $_GET['idCliente'];?>'">Agregar</button></h1>
+        <h1>Mascotas <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar" onclick="document.location='?modulo=mascota&accion=editar&idCliente=<?php echo $_GET['idCliente'];?>'">Agregar</button></h1>
       </div>
       <?php echo Util::getMsj(); ?>
       <table class="table table-striped table-bordered">

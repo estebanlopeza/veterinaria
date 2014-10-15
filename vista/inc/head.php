@@ -8,14 +8,13 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/estilos.css" rel="stylesheet">
-    
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
   <body>
-
     <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -33,14 +32,14 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clientes <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="?modulo=cliente&accion=listar">Listar clientes</a></li>
-                <li><a href="?modulo=cliente&accion=agregar">Agregar cliente</a></li>
+                <li><a href="?modulo=cliente&accion=editar">Agregar cliente</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Listar servicios</a></li>
-                <li><a href="#">Agregar servicio</a></li>
+                <li><a href="?modulo=servicio&accion=listar">Listar servicios</a></li>
+                <li><a href="?modulo=servicio&accion=editar">Agregar servicio</a></li>
               </ul>
             </li>
           </ul>

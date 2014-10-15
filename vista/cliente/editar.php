@@ -1,6 +1,6 @@
     <div class="container">
       <div class="page-header">
-        <h1>Cliente <button type="button" class="btn btn-primary btn-sm">Agregar</button></h1>
+        <h1>Cliente <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar">Agregar</button></h1>
       </div>
 
       <?php
