@@ -20,6 +20,7 @@ CREATE TABLE `alerta` (
   `fecha` date NOT NULL,
   `asunto` varchar(255) NOT NULL,
   `contenido` text NOT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_Mascota` (`id_mascota`),
   CONSTRAINT `FK_Mascota` FOREIGN KEY (`id_mascota`) REFERENCES `mascota` (`id`)
@@ -54,6 +55,7 @@ CREATE TABLE `consulta` (
   `id_veterinario` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `pesoMascota` float DEFAULT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_Mascota_Consulta` (`id_mascota`),
   KEY `FK_Veterinario` (`id_veterinario`),
@@ -68,12 +70,13 @@ CREATE TABLE `consulta` (
 CREATE TABLE `especie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `especie` */
 
-insert  into `especie`(`id`,`nombre`) values (1,'perro'),(2,'gato');
+insert  into `especie`(`id`,`nombre`,`eliminado`) values (1,'perro',0),(2,'gato',0);
 
 /*Table structure for table `gavet` */
 
@@ -94,6 +97,7 @@ CREATE TABLE `itemconsulta` (
   `id_servicio` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `observacion` text,
+  `eliminado` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_Gavet` (`id_gavet`),
   KEY `FK_Servicio` (`id_servicio`),
@@ -133,6 +137,7 @@ CREATE TABLE `raza` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_especie` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_Especie` (`id_especie`),
   CONSTRAINT `FK_Especie` FOREIGN KEY (`id_especie`) REFERENCES `especie` (`id`)
@@ -140,7 +145,7 @@ CREATE TABLE `raza` (
 
 /*Data for the table `raza` */
 
-insert  into `raza`(`id`,`id_especie`,`nombre`) values (1,1,'doberman'),(2,1,'caniche'),(3,2,'siames');
+insert  into `raza`(`id`,`id_especie`,`nombre`,`eliminado`) values (1,1,'doberman',0),(2,1,'caniche',0),(3,2,'siames',0);
 
 /*Table structure for table `servicio` */
 
@@ -167,12 +172,13 @@ CREATE TABLE `veterinario` (
   `usuario` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `veterinario` */
 
-insert  into `veterinario`(`id`,`matricula`,`apellido`,`nombre`,`usuario`,`password`,`email`) values (1,1,'Carpineta','Sebastian','scarpineta','4d186321c1a7f0f354b297e8914ab240','estebanlopeza@gmail.com');
+insert  into `veterinario`(`id`,`matricula`,`apellido`,`nombre`,`usuario`,`password`,`email`,`eliminado`) values (1,1,'Carpineta','Sebastian','scarpineta','4d186321c1a7f0f354b297e8914ab240','estebanlopeza@gmail.com',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
