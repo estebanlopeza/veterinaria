@@ -33,6 +33,7 @@ $cliente = $clienteNegocio->recuperar($_GET['idCliente']);
                 <td>
                   <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>&idCliente=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
                   <a href="?modulo=mascota&accion=eliminar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
+                  <a href="?modulo=consulta&accion=listar&idMascota=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Listar consultas"><span class="glyphicon glyphicon-list"></span></a>
                 </td>
               </tr>
           <?php

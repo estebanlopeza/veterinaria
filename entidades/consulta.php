@@ -45,9 +45,7 @@ class Consulta{
 		$this->pesoMascota = $pesoMascota;
 	}
 
-
-
-	//private $id_vetetinario = $_SESSION['id_usuario'];
+	private $id_vetetinario;
 
 	public function getIdVeterinario(){
 		return $this->id_veterinario;
@@ -66,7 +64,7 @@ class Consulta{
 			$this->setFecha($array['fecha']);
 			$this->setPesoMascota($array['pesoMascota']);
 			$this->setIdMascota($array['id_mascota']);
-			//$this->setIdVeterinario($array['id_veterinario']);
+			$this->setIdVeterinario($_SESSION['id_veterinario']);
 		}
 	}
 

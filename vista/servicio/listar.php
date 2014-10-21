@@ -31,7 +31,7 @@
           }else{
           ?>
           <tr>
-            <td colspan="4">No se encontraron resultados</td>
+            <td colspan="3">No se encontraron resultados</td>
           </tr>
           <?php
           }

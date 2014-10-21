@@ -4,11 +4,11 @@ error_reporting(E_ALL ^ E_NOTICE);
 $modulo = $_GET['modulo'];
 $accion = $_GET['accion'];
 
-$_SESSION['usuario'] = '1';
+$_SESSION['id_veterinario'] = '1';
 
 require_once('util/util.php');
 
-if($_SESSION['usuario']){
+if($_SESSION['id_veterinario']){
     if($modulo){
         
         /*Clase Negocio*/

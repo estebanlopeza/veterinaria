@@ -1,6 +1,6 @@
     <div class="container">
       <div class="page-header">
-        <h1>Consultas <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar" onclick="document.location='?modulo=cliente&accion=editar'">Agregar</button></h1>
+        <h1>Consultas <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar" onclick="document.location='?modulo=consulta&accion=editar&idMascota=<?php echo $_GET['idMascota'] ?>'">Agregar</button></h1>
       </div>
       <?php echo Util::getMsj(); ?>
       <table class="table table-striped table-bordered">
@@ -32,7 +32,7 @@
           }else{
           ?>
           <tr>
-            <td colspan="4">No se encontraron resultados</td>
+            <td colspan="3">No se encontraron resultados</td>
           </tr>
           <?php
           }

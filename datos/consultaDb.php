@@ -13,9 +13,9 @@ class ConsultaDb extends Db{
                 LIMIT 1";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
-        $cliente = new Cliente( $result->fetch_assoc() );
+        $consulta = new Consulta( $result->fetch_assoc() );
         $result->free();
-        return $cliente;
+        return $consulta;
     }
 
     public function getAll(){
@@ -44,26 +44,20 @@ class ConsultaDb extends Db{
         return $cliente;
     }
 
-    public function insert($cliente){
+    public function insert($consulta){
         
-        $sql = "INSERT INTO cliente( nombre,
-                                     apellido,
-                                     tipoDoc,
-                                     nroDoc,
-                                     direccion,
-                                     telefono,
-                                     email)
-                VALUES ('" . $cliente->getNombre() . "', 
-                        '" . $cliente->getApellido() . "', 
-                        '" . $cliente->getTipoDoc() . "',
-                         " . $cliente->getNroDoc() . ",
-                        '" . $cliente->getDireccion() . "',
-                        '" . $cliente->getTelefono() . "',
-                        '" . $cliente->getEmail() . "' )";
+        $sql = "INSERT INTO consulta( id_mascota,
+                                      id_veterinario,
+                                      fecha,
+                                      pesoMascota)
+                VALUES ( " . $consulta->getIdMascota() . ", 
+                         " . $consulta->getIdVeterinario() . ", 
+                        '" . $consulta->getFecha() . "',
+                        '" . $consulta->getPesoMascota() . "' )";
 
         $this->mysqli->query($sql) or die("Error ");
-        $cliente->setId( $this->mysqli->insert_id );
-        return $cliente;
+        $consulta->setId( $this->mysqli->insert_id );
+        return $consulta;
     }
 }
 ?>

@@ -10,7 +10,7 @@ class consultaNegocio{
   }
 
   public function recuperar($id){
-  	 $db = new ClienteDb();
+  	 $db = new ConsultaDb();
   	 return $db->getOne($id);
   }
    public function guardar(){
@@ -18,28 +18,29 @@ class consultaNegocio{
     	//validar los campos recibidos por $_POST
     	$valido = true;
     	$datos = $_POST;
+      $datos['fecha'] = Util::dateToDb($datos['fecha']);
 
     	if($valido){
     	//si todo está ok, guardar en BD e informar por pantalla
-    		$cliente = new cliente($datos);
-	        $db = new clienteDb();
-	        if($cliente->getId()){
+    		$consulta = new consulta($datos);
+	        $db = new consultaDb();
+	        if($consulta->getId()){
 
-	        	if( $db->update($cliente) instanceof cliente ){
-	        		Util::setMsj('El cliente fue actualizado con éxito','success');
-	        		header('Location:?modulo=cliente&accion=listar');
+	        	if( $db->update($consulta) instanceof consulta ){
+	        		Util::setMsj('La consulta fue actualizada con éxito','success');
+	        		header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
               die();
 	        	}else{
-	        		Util::setMsj('Hubo un problema actualizando el cliente','danger');
+	        		Util::setMsj('Hubo un problema actualizando la consulta','danger');
 	        	}
 	        }else{
 
-	        	if( $db->insert($cliente) instanceof cliente ){
-	        		Util::setMsj('El cliente fue insertado con éxito','success');
-	        		header('Location:?modulo=cliente&accion=listar');
+	        	if( $db->insert($consulta) instanceof consulta ){
+	        		Util::setMsj('La consulta fue insertada con éxito','success');
+	        		header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
               die();
 	        	}else{
-	        		Util::setMsj('Hubo un problema insertando el cliente','danger');
+	        		Util::setMsj('Hubo un problema insertando la consulta','danger');
 	        	}
 	        }
     	}else{
