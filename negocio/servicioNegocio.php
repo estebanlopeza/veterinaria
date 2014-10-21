@@ -48,6 +48,29 @@ class servicioNegocio{
     	}
 
     }
+
+    public function eliminar(){
+
+        //validar los campos recibidos por $_POST
+        $valido = true;
+        $datos = $_POST;
+
+        if($valido){
+        //si todo está ok, guardar en BD e informar por pantalla
+            $servicio = new servicio($datos);
+            $db = new servicioDb();
+
+            if( $db->remove($servicio)){
+                Util::setMsj('El servicio <strong>'.$servicio->getNombre().'</strong> fue eliminado con exito','success');
+            }else{
+                Util::setMsj('Hubo un problema eliminando el servicio','danger');
+            }
+            header('Location:?modulo=servicio&accion=listar');
+            die();
+        }else{
+        //si hay algun error, informar por pantalla
+        }
+    }
 }
 
 

@@ -1,15 +1,16 @@
+      <?php
+      if ($_GET['id']) {
+          $servicio = $servicioNegocio->recuperar($_GET['id']);
+          $txtAction = 'Editar';
+      }else{
+        $servicio = new servicio();
+        $txtAction = 'Agregar';
+      }
+      ?>
     <div class="container">
       <div class="page-header">
         <h1>Servicio <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar">Agregar</button></h1>
       </div>
-
-      <?php
-      if ($_GET['id']) {
-          $servicio = $servicioNegocio->recuperar($_GET['id']);
-      }else{
-        $servicio = new servicio();
-      }
-      ?>
         <form role="form" method="post">
             <input type="hidden" name="id" value="<?php echo $servicio->getId();?>">
             <div class="form-group">
@@ -25,6 +26,7 @@
                 <input type="text" class="form-control" id="nroGAVET" name="nroGAVET" placeholder="Número de Gavet" value="<?php echo $servicio->getNroGavet();?>"  >
             </div>
             
-            <button type="submit" class="btn btn-default">Enviar</button>
+            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
         </form>
     </div>

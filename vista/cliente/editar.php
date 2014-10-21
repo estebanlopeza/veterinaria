@@ -1,17 +1,16 @@
+    <?php
+    if ($_GET['id']) {
+        $cliente = $clienteNegocio->recuperar($_GET['id']);
+        $txtAction = 'Editar';
+    }else{
+        $cliente = new cliente();
+        $txtAction = 'Agregar';
+    }
+    ?>
     <div class="container">
       <div class="page-header">
-        <h1>Cliente <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar">Agregar</button></h1>
+        <h1><?php echo $txtAction; ?> Cliente</h1>
       </div>
-
-      <?php
-      if ($_GET['id']) {
-          $cliente = $clienteNegocio->recuperar($_GET['id']);
-
-
-      }else{
-        $cliente = new cliente();
-      }
-      ?>
         <form role="form" method="post">
             <input type="hidden" name="id" value="<?php echo $cliente->getId();?>" >
             <div class="form-group">
@@ -48,8 +47,7 @@
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $cliente ->getEmail();?>">
             </div>
             
-            
-            
-            <button type="submit" class="btn btn-default">Enviar</button>
+            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
         </form>
     </div>

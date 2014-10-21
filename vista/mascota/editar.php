@@ -71,6 +71,6 @@
             </div>
             
             <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
         </form>
     </div>

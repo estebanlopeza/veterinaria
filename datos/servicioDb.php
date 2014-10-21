@@ -22,6 +22,7 @@ class ServicioDb extends Db{
         
         $sql = "SELECT s.* 
                 FROM servicio AS s
+                WHERE s.eliminado = 0 
                 ORDER BY s.nombre ASC";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
@@ -52,6 +53,13 @@ class ServicioDb extends Db{
         $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         $servicio->setId( $this->mysqli->insert_id );
         return $servicio;
+    }
+
+    public function remove($servicio){
+        $sql = "UPDATE servicio SET eliminado = 1
+                WHERE id = " . $servicio->getId();
+        $this->mysqli->query($sql) or die("Error ");
+        return true;
     }
 }
 ?>

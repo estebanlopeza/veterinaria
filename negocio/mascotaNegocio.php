@@ -47,6 +47,7 @@ class mascotaNegocio{
     	//si hay algun error, informar por pantalla
     	}
     }
+
     public function eliminar(){
 
         //validar los campos recibidos por $_POST
@@ -68,7 +69,6 @@ class mascotaNegocio{
         }else{
         //si hay algun error, informar por pantalla
         }
-
     }
 }
 

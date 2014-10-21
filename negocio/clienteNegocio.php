@@ -47,6 +47,29 @@ class clienteNegocio{
     	}
 
     }
+
+    public function eliminar(){
+
+        //validar los campos recibidos por $_POST
+        $valido = true;
+        $datos = $_POST;
+
+        if($valido){
+        //si todo está ok, guardar en BD e informar por pantalla
+            $cliente = new cliente($datos);
+            $db = new clienteDb();
+
+            if( $db->remove($cliente)){
+                Util::setMsj('El cliente <strong>'.$cliente->getNombre().'</strong> fue eliminado con exito','success');
+            }else{
+                Util::setMsj('Hubo un problema eliminando el cliente','danger');
+            }
+            header('Location:?modulo=cliente&accion=listar');
+            die();
+        }else{
+        //si hay algun error, informar por pantalla
+        }
+    }
 }
 
 

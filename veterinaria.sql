@@ -38,12 +38,13 @@ CREATE TABLE `cliente` (
   `direccion` text NOT NULL,
   `telefono` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `cliente` */
 
-insert  into `cliente`(`id`,`tipoDoc`,`nroDoc`,`apellido`,`nombre`,`direccion`,`telefono`,`email`) values (1,'DNI',31116431,'Lopez','Esteban','Cerrito 127','123456','estebanlopeza@gmail.com'),(2,'DNI',34213423,'Pappini','Francisco','Zeballos 1341		','987654','francisco@pappini.com');
+insert  into `cliente`(`id`,`tipoDoc`,`nroDoc`,`apellido`,`nombre`,`direccion`,`telefono`,`email`,`eliminado`) values (1,'DNI',31116431,'Lopez','Esteban','Cerrito 127','123456','estebanlopeza@gmail.com',1),(2,'DNI',34213423,'Pappini','Francisco','Zeballos 1341		','987654','francisco@pappini.com',0);
 
 /*Table structure for table `consulta` */
 
@@ -114,16 +115,17 @@ CREATE TABLE `mascota` (
   `fechaNac` date NOT NULL,
   `sexo` enum('macho','hembra') NOT NULL,
   `pelaje` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`,`eliminado`),
   KEY `FK_Raza` (`id_raza`),
   KEY `FK_Cliente` (`id_cliente`),
   CONSTRAINT `FK_Cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`),
   CONSTRAINT `FK_Raza` FOREIGN KEY (`id_raza`) REFERENCES `raza` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `mascota` */
 
-insert  into `mascota`(`id`,`id_cliente`,`id_raza`,`nombre`,`fechaNac`,`sexo`,`pelaje`) values (1,1,1,'bobby','2012-06-12','macho','negro'),(2,1,2,'garfield','2013-10-23','hembra','naranja');
+insert  into `mascota`(`id`,`id_cliente`,`id_raza`,`nombre`,`fechaNac`,`sexo`,`pelaje`,`eliminado`) values (1,1,1,'Bobby modif','2012-06-12','macho','negro',1),(2,1,3,'robertito','2014-10-23','hembra','naranja',1),(3,1,1,'Perro nuevo','1234-12-12','hembra','lila',0),(4,1,1,'Perro nuevo 2','1234-12-12','hembra','lila',1),(5,1,2,'ljkjlkjl','1233-12-12','macho','hkjhkj',0);
 
 /*Table structure for table `raza` */
 
@@ -147,10 +149,13 @@ CREATE TABLE `servicio` (
   `nombre` varchar(255) NOT NULL,
   `descripcion` text NOT NULL,
   `nroGAVET` int(11) NOT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `servicio` */
+
+insert  into `servicio`(`id`,`nombre`,`descripcion`,`nroGAVET`,`eliminado`) values (1,'Sarasa','adsa d asd asdas ',8,0);
 
 /*Table structure for table `veterinario` */
 

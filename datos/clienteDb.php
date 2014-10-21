@@ -22,6 +22,7 @@ class ClienteDb extends Db{
         
         $sql = "SELECT c.* 
                 FROM cliente AS c
+                WHERE c.eliminado = 0 
                 ORDER BY c.apellido ASC, c.nombre ASC";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
@@ -64,6 +65,13 @@ class ClienteDb extends Db{
         $this->mysqli->query($sql) or die("Error ");
         $cliente->setId( $this->mysqli->insert_id );
         return $cliente;
+    }
+
+    public function remove($cliente){
+        $sql = "UPDATE cliente SET eliminado = 1
+                WHERE id = " . $cliente->getId();
+        $this->mysqli->query($sql) or die("Error ");
+        return true;
     }
 }
 ?>
