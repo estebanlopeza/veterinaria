@@ -1,6 +1,17 @@
+<?php 
+$mascotaNegocio = new mascotaNegocio();
+$arrayMascotas = $mascotaNegocio->listar();
+require_once('negocio/clienteNegocio.php');
+$clienteNegocio = new clienteNegocio();
+$cliente = $clienteNegocio->recuperar($_GET['idCliente']);
+ ?>
     <div class="container">
       <div class="page-header">
-        <h1>Mascotas <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar" onclick="document.location='?modulo=mascota&accion=editar&idCliente=<?php echo $_GET['idCliente'];?>'">Agregar</button></h1>
+        <h1>Mascotas <button type="button" class="btn btn-primary btn-sm" onclick="document.location='?modulo=mascota&accion=editar&idCliente=<?php echo $_GET['idCliente'];?>'">Agregar</button></h1>
+        <h1> 
+          <small><?php echo  ?></small>
+          <br />Mascotas <button type="button" class="btn btn-primary btn-sm" onclick="document.location='?modulo=mascota&accion=editar&idCliente=<?php echo $cliente->getId();?>'">Agregar</button></h1>
+>>>>>>> Stashed changes
       </div>
       <?php echo Util::getMsj(); ?>
       <table class="table table-striped table-bordered">
@@ -24,7 +35,7 @@
                 <td><?php echo $mascota->getNombre();?></td>
                 <td><?php echo $mascota->getFechaNac();?></td>
                 <td>
-                  <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>&idCliente=<?php echo $_GET['idCliente'];?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                  <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>&idCliente=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
                   <a href="?modulo=mascota&accion=eliminar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
                 </td>
               </tr>

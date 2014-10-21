@@ -9,26 +9,36 @@ $_SESSION['usuario'] = '1';
 require_once('util/util.php');
 
 if($_SESSION['usuario']){
-  if($modulo){
-    
-    /*Clase Negocio*/
-    require_once('negocio/'.$modulo.'Negocio.php');
+    if($modulo){
+        
+        /*Clase Negocio*/
+        require_once('negocio/'.$modulo.'Negocio.php');
 
-    $nombreNegocio = $modulo."Negocio";
-    $$nombreNegocio = new $nombreNegocio();
+        $nombreNegocio = $modulo."Negocio";
+        $$nombreNegocio = new $nombreNegocio();
 
-    if($accion == 'editar' && $_POST){
-      $$nombreNegocio->guardar();
+        /*Proceso de formularios*/
+        if($_POST){
+            switch ($accion) {
+                case 'editar':
+                    $$nombreNegocio->guardar();
+                    break;
+                case 'eliminar':
+                    $$nombreNegocio->eliminar();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        require_once('vista/inc/head.php');
+        if($accion){
+          require_once('vista/'.$modulo.'/'.$accion.'.php');  
+        }
+        require_once('vista/inc/foot.php'); 
     }
-
-
-    require_once('vista/inc/head.php');
-    if($accion){
-      require_once('vista/'.$modulo.'/'.$accion.'.php');  
-    }
-    require_once('vista/inc/foot.php'); 
-  }
 }else{
-  require_once('login.php');
+    require_once('login.php');
 }
 ?>

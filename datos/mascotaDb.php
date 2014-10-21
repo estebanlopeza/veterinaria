@@ -25,7 +25,8 @@ class MascotaDb extends Db{
         
         $sql = "SELECT m.* 
                 FROM mascota AS m
-                WHERE m.id_cliente = " . $id_cliente . " 
+                WHERE m.id_cliente = " . $id_cliente . "
+                AND m.eliminado = 0 
                 ORDER BY m.id ASC";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
@@ -64,6 +65,13 @@ class MascotaDb extends Db{
         $this->mysqli->query($sql) or die("Error ");
         $mascota->setId( $this->mysqli->insert_id );
         return $mascota;
+    }
+
+    public function remove($mascota){
+        $sql = "UPDATE mascota SET eliminado = 1
+                WHERE id = " . $mascota->getId();
+        $this->mysqli->query($sql) or die("Error ");
+        return true;
     }
 }
 ?>

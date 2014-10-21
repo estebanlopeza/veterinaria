@@ -15,8 +15,12 @@
     ?>
     <div class="container">
       <div class="page-header">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+        <h1>Mascota <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar">Agregar</button></h1>
+=======
         <h1><?php echo $txtAction; ?> Mascota</h1>
-      </div>
+>>>>>>> Stashed changes
 =======
         <h1><?php echo $txtAction; ?> Mascota</h1>
 >>>>>>> Stashed changes
