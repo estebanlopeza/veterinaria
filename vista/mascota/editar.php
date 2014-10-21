@@ -17,10 +17,6 @@
       <div class="page-header">
         <h1><?php echo $txtAction; ?> Mascota</h1>
       </div>
-=======
-        <h1><?php echo $txtAction; ?> Mascota</h1>
->>>>>>> Stashed changes
-      </div>
         <form role="form" method="post">
             <input type="hidden" name="id" value="<?php echo $mascota->getId();?>" >
             <input type="hidden" name="id_cliente" value="<?php echo $_GET['idCliente'];?>" >
