@@ -6,6 +6,11 @@
         $consulta = new consulta();
         $txtAction = 'Agregar';
     }
+
+    require_once('negocio/servicioNegocio.php');
+    $servicioNegocio = new servicioNegocio();
+    $arrayServicio = $servicioNegocio->listar();
+
     ?>
     <div class="container">
       <div class="page-header">
@@ -27,7 +32,65 @@
                     <div class="input-group-addon">Kgs.</div>
                 </div>
             </div>
-            
+
+            <h2>Servicios</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="id_servicio">Servicio</label>
+                        <select class="form-control" id="id_servicio" name="id_servicio">
+                            <option value=""> Seleccione un Servicio</option>
+                            <?php
+                            foreach ($arrayServicio as $servicio) {
+                                echo '<option value="'. $servicio->getId() .'" ';
+                                echo '>' . $servicio->getNombre() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacion">Observaciones</label>
+                        <textarea class="form-control" rows="3" name="observacion" id="observacion"> </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-sm">Agregar Servicio</button>
+                </div>
+                <div class="col-md-6">.col-md-6</div>
+            </div>
+
+
+            <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Observación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          if ($_GET['id_consulta']) {
+              $itemConsultaNegocio = new itemConsultaNegocio();
+              $arrayItemConsultas = $itemConsultaNegocio->listar($_GET['id_consulta']);
+              if( count($arrayItemConsultas) > 0 ){
+                foreach( $arrayItemConsultas as $itemConsulta ){
+              ?>
+                  <tr>
+                    <td><?php echo $servicio->getNombre();?></td>
+                    <td><?php echo $consulta->getFecha();?></td>
+                    <td>
+                      <a href="?modulo=consulta&accion=eliminar&id=<?php echo $consulta->getId();?>" data-toggle="tooltip" title="Eliminar consulta"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
+                    </td>
+                  </tr>
+              <?php
+                }
+              }
+        }
+
+          ?>
+        </tbody>
+      </table>
+
+
             <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
         </form>
