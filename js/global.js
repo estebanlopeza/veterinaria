@@ -11,7 +11,6 @@ $(function(){
         container: 'body'
     });
 
-
     /*Cancelar*/
     $('.cancelForm').on('click',function(e){
     	e.preventDefault();
@@ -19,6 +18,14 @@ $(function(){
     	history.go(-1);
     });
 
+    /*Datepicker*/
+    $(".datepicker").datepicker({
+        format: "dd/mm/yyyy",
+        language: "es",
+        todayHighlight: true
+    });
+
+    /*Agregar Servicio*/
     $('#btnAgregarServicio').on('click',function(e){
         e.preventDefault();
         var idServicio      = $('#id_servicio').val(),

@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="fecha">Fecha de consulta</label>
                 <p class="help-block">Formato dd/mm/yyyy.</p>
-                <input type="text" class="form-control" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>">
+                <input type="text" class="form-control datepicker" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>">
 
             </div>
             <div class="form-group">
