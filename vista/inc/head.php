@@ -46,9 +46,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Opciones</a></li>
-            <li><a href="#">Salir</a></li>
+            <li><a href="index.php?action=logout">Salir</a></li>
           </ul>
-          <p class="navbar-text navbar-right">Hola Juan!</p>
+          <p class="navbar-text navbar-right">Hola <strong><?php echo $_SESSION['veterinario']['nombre'] ?></strong>!</p>
         </div><!--/.nav-collapse -->
       </div>
     </div><!-- /navbar -->

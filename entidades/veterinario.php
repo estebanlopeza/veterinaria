@@ -2,6 +2,16 @@
 
 class Veterinario{
 
+	private $id;
+
+	public function getId(){
+		return $this->id;
+	}
+
+	public function setId($id){
+		$this->id = $id;
+	}
+
 	private $matricula;
 
 	public function getMatricula(){
@@ -66,6 +76,19 @@ class Veterinario{
 	public function setEmail($email){
 		$this->email = $email;
 	}
+
+	public function __construct($array = null){
+        if($array){
+        	if($array['id']){
+        		$this->setId($array['id']);
+        	}
+        $this->setNombre($array['nombre']);
+        $this->setApellido($array['apellido']);
+        $this->setMatricula($array['matricula']);
+        $this->setUsuario($array['usuario']);
+        $this->setEmail($array['email']);
+        }
+    }
 
 }
 

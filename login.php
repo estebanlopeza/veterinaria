@@ -1,3 +1,8 @@
+<?php 
+session_start();
+error_reporting(E_ALL ^ E_NOTICE);
+require_once('util/util.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -19,11 +24,15 @@
 
     <div class="container">
 
-      <form class="form-signin" action="checkLogin.php" method="post" role="form">
+
+      <form class="form-signin" action="index.php" method="post" role="form">
         <h2 class="form-signin-heading">Veterinaria RdA</h2>
-        <input type="email" class="form-control" placeholder="Usuario" name="usuario" required autofocus>
+        <input type="text" class="form-control" placeholder="Usuario" name="usuario" required autofocus>
         <input type="password" class="form-control" placeholder="Contrase&ntilde;a" name="password" required>
+        <!--
         <p><a href="#"> Olvid&eacute; mi contrase&ntilde;a</a></p>
+        -->
+        <p><?php echo Util::getMsj(); ?></p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
       </form>
 
