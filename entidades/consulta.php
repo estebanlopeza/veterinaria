@@ -4,8 +4,6 @@ class Consulta{
 
 	private $fecha;
 
-
-
 	public function getFecha(){
 		return $this->fecha;
 	}
@@ -56,15 +54,34 @@ class Consulta{
 
 	}
 
+	private $itemsConsulta;
+
+	public function getItemsConsulta(){
+		return $this->itemsConsulta;
+	}
+
+	public function setItemsConsulta($itemsConsulta){
+		$this->itemsConsulta = $itemsConsulta;
+
+	}
+
 	public function __construct($array = null){
 		if($array){
 			if($array['id']){
 				$this->setId($array['id']);
 			}
 			$this->setFecha($array['fecha']);
-			$this->setPesoMascota($array['pesoMascota']);
+			$aux = ($array['pesoMascota'])? $array['pesoMascota'] : 0;
+			$this->setPesoMascota($aux);
 			$this->setIdMascota($array['id_mascota']);
 			$this->setIdVeterinario($_SESSION['id_veterinario']);
+			$aux = array();
+			for ($i=0; $i<count($array['servicios']); $i++){ 
+				$aux[$i]['id_servicio'] = $array['servicios'][$i];
+				$aux[$i]['observacion'] = $array['observaciones'][$i];
+				$aux[$i]['precioSugerido'] = $array['preciosSugeridos'][$i];
+			}
+			$this->setItemsConsulta($aux);
 		}
 	}
 

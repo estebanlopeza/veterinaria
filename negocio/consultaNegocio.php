@@ -23,10 +23,9 @@ class consultaNegocio{
 
     	if($valido){
     	//si todo está ok, guardar en BD e informar por pantalla
-    		$consulta = new consulta($datos);
+      		$consulta = new consulta($datos);
 	        $db = new consultaDb();
 	        if($consulta->getId()){
-
 	        	if( $db->update($consulta) instanceof consulta ){
 	        		Util::setMsj('La consulta fue actualizada con éxito','success');
 	        	}else{
@@ -40,8 +39,6 @@ class consultaNegocio{
 	        		Util::setMsj('Hubo un problema insertando la consulta','danger');
 	        	}
 	        }
-
-
           
           header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
           die();

@@ -30,18 +30,18 @@ class ConsultaDb extends Db{
         return $array;
     }
 
-    public function update($cliente){
+    public function update($consulta){
         
-        $sql = "UPDATE cliente SET nombre = '" . $cliente->getNombre() . "', 
+        $sql = "UPDATE consulta SET nombre = '" . $consulta->getNombre() . "', 
                                    apellido = '" . $cliente->getApellido() . "',
                                    tipoDoc = '" . $cliente->getTipoDoc() . "',
                                    nroDoc = " . $cliente->getNroDoc() . ",
                                    direccion = '" . $cliente->getDireccion() . "',
                                    telefono = '" . $cliente->getTelefono() . "', 
                                    email = '" . $cliente->getEmail() . "'
-                WHERE id = " . $cliente->getId();
+                WHERE id = " . $consulta->getId();
         $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
-        return $cliente;
+        return $consulta;
     }
 
     public function insert($consulta){
@@ -53,11 +53,36 @@ class ConsultaDb extends Db{
                 VALUES ( " . $consulta->getIdMascota() . ", 
                          " . $consulta->getIdVeterinario() . ", 
                         '" . $consulta->getFecha() . "',
-                        '" . $consulta->getPesoMascota() . "' )";
+                        '" . $consulta->getPesoMascota() . "' )";   
 
-        $this->mysqli->query($sql) or die("Error ");
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         $consulta->setId( $this->mysqli->insert_id );
+
+        $itemsConsulta = $consulta->getItemsConsulta();
+
+        foreach ($itemsConsulta as $items) {
+          
+        $this->insertItemConsulta($items, $consulta->getId());
+
+        }
+
         return $consulta;
+
+      }
+
+      public function insertItemConsulta($items, $idConsulta){
+
+        $sql = "INSERT INTO itemconsulta ( id_servicio,
+                                          id_consulta,
+                                          observacion,
+                                          precioSugerido)
+                VALUES ( " . $items['id_servicio'] . ", 
+                         " . $idConsulta . ", 
+                        '" . $items['observacion'] . "',
+                        '" . $items['precioSugerido'] . "' )";
+
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        return true;
     }
 }
 ?>

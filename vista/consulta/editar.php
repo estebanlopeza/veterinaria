@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label for="id_servicio">Servicio</label>
                         <select class="form-control" id="id_servicio" name="id_servicio">
-                            <option value=""> Seleccione un Servicio</option>
+                            <option value="">Seleccione un Servicio</option>
                             <?php
                             foreach ($arrayServicio as $servicio) {
                                 echo '<option value="'. $servicio->getId() .'" ';
