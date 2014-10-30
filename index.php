@@ -16,7 +16,6 @@ if($_POST['usuario'] && $_POST['password']){
         $_SESSION['veterinario']['nombre'] = $vet->getNombre();
         $_SESSION['veterinario']['usuario'] = $vet->getUsuario();
         $_SESSION['veterinario']['email'] = $vet->getEmail();
-        $logged = true;
     }else{
         Util::setMsj('Usuario o contraseña incorrectos','danger', false);
         header('Location: login.php');
@@ -29,7 +28,7 @@ if($_POST['usuario'] && $_POST['password']){
     die;
 }
 
-if($_SESSION['veterinario'] || $logged){
+if($_SESSION['veterinario']){
     $modulo = $_GET['modulo']? $_GET['modulo'] : 'cliente';
     $accion = $_GET['accion']? $_GET['accion'] : 'listar';
     
@@ -62,6 +61,7 @@ if($_SESSION['veterinario'] || $logged){
     require_once('vista/inc/foot.php'); 
 
 }else{
-    require_once('login.php');
+    header('Location: login.php');
+    die;
 }
 ?>

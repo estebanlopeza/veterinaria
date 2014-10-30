@@ -74,7 +74,7 @@ class Consulta{
 			$aux = ($array['pesoMascota'])? $array['pesoMascota'] : 0;
 			$this->setPesoMascota($aux);
 			$this->setIdMascota($array['id_mascota']);
-			$this->setIdVeterinario($_SESSION['id_veterinario']);
+			$this->setIdVeterinario($_SESSION['veterinario']['id']);
 			$aux = array();
 			for ($i=0; $i<count($array['servicios']); $i++){ 
 				$aux[$i]['id_servicio'] = $array['servicios'][$i];
