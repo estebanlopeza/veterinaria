@@ -18,6 +18,7 @@ class consultaNegocio{
     	//validar los campos recibidos por $_POST
     	$valido = true;
     	$datos = $_POST;
+
       $datos['fecha'] = Util::dateToDb($datos['fecha']);
 
     	if($valido){
@@ -28,8 +29,6 @@ class consultaNegocio{
 
 	        	if( $db->update($consulta) instanceof consulta ){
 	        		Util::setMsj('La consulta fue actualizada con éxito','success');
-	        		header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
-              die();
 	        	}else{
 	        		Util::setMsj('Hubo un problema actualizando la consulta','danger');
 	        	}
@@ -37,12 +36,15 @@ class consultaNegocio{
 
 	        	if( $db->insert($consulta) instanceof consulta ){
 	        		Util::setMsj('La consulta fue insertada con éxito','success');
-	        		header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
-              die();
 	        	}else{
 	        		Util::setMsj('Hubo un problema insertando la consulta','danger');
 	        	}
 	        }
+
+
+          
+          header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
+          die();
     	}else{
     	//si hay algun error, informar por pantalla
     	}

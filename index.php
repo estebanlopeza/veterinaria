@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL ^ E_NOTICE);
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 $modulo = $_GET['modulo'];
 $accion = $_GET['accion'];
 
