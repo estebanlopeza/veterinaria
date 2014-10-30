@@ -75,6 +75,8 @@
                         </thead>
                         <tbody>
                           <?php
+                            if($_GET['id'])
+                            {
                             $itemsConsulta = $consulta->getItemsConsulta();
                             foreach( $itemsConsulta as $item ){
                           ?>
@@ -95,6 +97,7 @@
                               </tr>
                           <?php
                             }
+                        }
                           ?>
                         </tbody>
                     </table>

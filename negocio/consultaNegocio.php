@@ -40,12 +40,35 @@ class consultaNegocio{
 	        	}
 	        }
           
-          header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
+          header('Location:?modulo=consulta&accion=listar&idMascota=' . $consulta->getIdMascota());
           die();
     	}else{
     	//si hay algun error, informar por pantalla
     	}
 
+    }
+
+        public function eliminar(){
+
+        //validar los campos recibidos por $_POST
+        $valido = true;
+        $datos = $_POST;
+
+        if($valido){
+        //si todo está ok, guardar en BD e informar por pantalla
+            $consulta = new consulta($datos);
+            $db = new consultaDb();
+
+            if( $db->remove($consulta)){
+                Util::setMsj('La Consulta fue eliminada con éxito','success');
+            }else{
+                Util::setMsj('Hubo un problema eliminando la Consulta','danger');
+            }
+            header('Location:?modulo=consulta&accion=listar&idMascota='.$consulta->getIdMascota());
+            die();
+        }else{
+        //si hay algun error, informar por pantalla
+        }
     }
 }
 
