@@ -13,7 +13,8 @@ class ConsultaDb extends Db{
                 LIMIT 1";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
-        $consulta = new Consulta( $result->fetch_assoc() );
+        $consulta = new Consulta( $result->fetch_assoc());
+        $consulta->setItemsConsulta($this->getItems($id));
         $result->free();
         return $consulta;
     }
@@ -28,6 +29,18 @@ class ConsultaDb extends Db{
         $array = $this->resourceToObjects($result,'consulta');
         $result->free();
         return $array;
+    }
+
+    public function getItems($idConsulta){
+        global $mysqli;
+        
+        $sql = "SELECT i.id_servicio, i.observacion, i.precioSugerido
+                FROM itemConsulta AS i
+                WHERE id_consulta = " . $idConsulta . " ";
+
+        $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+
+        return $this->resourceToArray($result);
     }
 
     public function update($consulta){

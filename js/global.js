@@ -60,7 +60,7 @@ $(function(){
             $('<td>').html(precioSugerido).appendTo(fila);
 
             var cerrar = $('<a href="#" title="Eliminar consulta"><span class="glyphicon glyphicon-remove"></span></a>');
-            cerrar.on('click',removerServicio);
+            cerrar.addClass('removeItemConsulta').on('click',removerServicio);
 
             $('<td>').append(cerrar).appendTo(fila);
 
@@ -70,6 +70,8 @@ $(function(){
             $('#observacion').val('');
         }
     });
+
+    $('.removeItemConsulta').on('click',removerServicio);
 
 });
 

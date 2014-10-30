@@ -75,22 +75,25 @@
                         </thead>
                         <tbody>
                           <?php
-                          if ($_GET['id_consulta']) {
-                              $itemConsultaNegocio = new itemConsultaNegocio();
-                              $arrayItemConsultas = $itemConsultaNegocio->listar($_GET['id_consulta']);
-                              if( count($arrayItemConsultas) > 0 ){
-                                foreach( $arrayItemConsultas as $itemConsulta ){
-                              ?>
-                                  <tr>
-                                    <td><?php echo $servicio->getNombre();?></td>
-                                    <td><?php echo $consulta->getFecha();?></td>
-                                    <td>
-                                      <a href="#" title="Eliminar consulta"><span class="glyphicon glyphicon-remove"></span></a>
-                                    </td>
-                                  </tr>
-                              <?php
-                                }
-                              }
+                            $itemsConsulta = $consulta->getItemsConsulta();
+                            foreach( $itemsConsulta as $item ){
+                          ?>
+                              <tr>
+                                <td>
+                                    <?php 
+                                        echo $servicioNegocio->recuperar($item['id_servicio'])->getNombre(); 
+                                        echo '<input name="servicios[]" type="hidden" value="'.$item['id_servicio'].'">';
+                                        echo '<textarea name="observaciones[]" class="hidden">'.$item['observacion'].'</textarea>';
+                                        echo '<input name="preciosSugeridos[]" type="hidden" value="'.$item['precioSugerido'].'">';
+                                    ?>
+                                </td>
+                                <td><?php echo $item['observacion'];?></td>
+                                <td><?php echo $item['precioSugerido'];?></td>
+                                <td>
+                                  <a href="#" title="Eliminar consulta" class="removeItemConsulta"><span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                              </tr>
+                          <?php
                             }
                           ?>
                         </tbody>

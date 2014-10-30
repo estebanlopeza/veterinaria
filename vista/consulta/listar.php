@@ -23,8 +23,7 @@
                 <td><?php echo $consulta->getFecha();?></td>
                 <td>
                   <a href="?modulo=consulta&accion=editar&id=<?php echo $consulta->getId();?>" data-toggle="tooltip" title="Editar consulta"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
-                  <a href="?modulo=consulta&accion=eliminar&id=<?php echo $consulta->getId();?>" data-toggle="tooltip" title="Eliminar consulta"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
-                  <a href="?modulo=consulta&accion=editar" data-toggle="tooltip" title="Agregar consulta"><span class="glyphicon glyphicon-list"></span></a>
+                  <a href="?modulo=consulta&accion=eliminar&id=<?php echo $consulta->getId();?>" data-toggle="tooltip" title="Eliminar consulta"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
               </tr>
           <?php
