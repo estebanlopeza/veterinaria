@@ -4,9 +4,9 @@ require_once('datos/consultaDb.php');
 
 class consultaNegocio{
   
-  public function listar(){
+  public function listar($idMascota){
       $db = new ConsultaDb();
-      return $db->getAll();
+      return $db->getAll($idMascota);
   }
 
   public function recuperar($id){

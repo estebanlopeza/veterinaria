@@ -19,11 +19,12 @@ class ConsultaDb extends Db{
         return $consulta;
     }
 
-    public function getAll(){
+    public function getAll($idMascota){
         
         $sql = "SELECT c.* 
                 FROM consulta AS c
-                WHERE c.eliminado = 0
+                WHERE c.id_mascota = ".$idMascota."
+                AND c.eliminado = 0
                 ORDER BY c.id ASC";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));

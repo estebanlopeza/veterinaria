@@ -16,6 +16,8 @@ if($_POST['usuario'] && $_POST['password']){
         $_SESSION['veterinario']['nombre'] = $vet->getNombre();
         $_SESSION['veterinario']['usuario'] = $vet->getUsuario();
         $_SESSION['veterinario']['email'] = $vet->getEmail();
+        header('Location: ?modulo=cliente&accion=listar');
+        die;
     }else{
         Util::setMsj('Usuario o contraseña incorrectos','danger', false);
         header('Location: login.php');
