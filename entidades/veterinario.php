@@ -86,6 +86,7 @@ class Veterinario{
         $this->setApellido($array['apellido']);
         $this->setMatricula($array['matricula']);
         $this->setUsuario($array['usuario']);
+        $this->setPassword($array['password']);
         $this->setEmail($array['email']);
         }
     }
