@@ -34,9 +34,21 @@ class Gavet{
 	}
 
     public function __construct($array = null){
-        $this->setId($array['id']);     	       
-        $this->setFechaDesde($array['fechaDesde']);
-        $this->setPrecioGavet($array['precioGAVET']);	
+        if ($array['id']) {
+        	$this->setId($array['id']);
+        }
+        if ($array['fechaDesde']){
+        	$this->setFechaDesde($array['fechaDesde']);
+        }
+        else{
+        	$this->setFechaDesde(date('Y-m-d')); 
+        }
+        if ($array['precioGAVET']) {
+        	$this->setPrecioGavet($array['precioGAVET']);	
+        }
+        else{
+        	$this->setPrecioGavet($array['precioGavet']);
+        }	
     }
 }
 

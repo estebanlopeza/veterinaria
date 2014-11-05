@@ -51,6 +51,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="?modulo=veterinario&accion=listar">Listar veterinarios</a></li>
                 <li><a href="?modulo=veterinario&accion=editar">Agregar veterinario</a></li>
+                <li><a href="?modulo=gavet&accion=editar">Actualizar Gavet</a></li>
               </ul>
             </li>
             <li><a href="index.php?action=logout">Salir</a></li>

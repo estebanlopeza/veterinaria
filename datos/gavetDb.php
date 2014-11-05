@@ -19,5 +19,17 @@ class gavetDb extends Db{
         $result->free();
         return $gavet;
     }
+
+    public function insert($gavet){
+        
+        $sql = "INSERT INTO gavet   (fechaDesde,
+                                     precioGAVET)
+                VALUES ('" . $gavet->getFechaDesde() . "', 
+                        '" . $gavet->getPrecioGavet() . "')";
+        
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        $gavet->setId( $this->mysqli->insert_id );
+        return $gavet;
+    }
 }
 ?>
