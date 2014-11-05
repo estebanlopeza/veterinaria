@@ -40,6 +40,11 @@ body#login {
   border-top-right-radius: 0;
 }
 
+/* contenedor */
+.container{
+  padding-bottom: 15px;
+}
+
 /* tablas */
 .table th:first-child,
 .table th:last-child{

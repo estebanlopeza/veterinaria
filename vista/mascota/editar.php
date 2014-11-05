@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="fechaNac">Fecha de nacimiento</label>
                 <p class="help-block">Formato dd/mm/yyyy.</p>
-                <input type="text" class="form-control" id="fechaNac" name="fechaNac" placeholder="dd/mm/yyyy" value="<?php echo Util::dbToDate($mascota->getFechaNac());?>">
+                <input type="text" class="form-control datepicker" id="fechaNac" name="fechaNac" placeholder="dd/mm/yyyy" value="<?php echo Util::dbToDate($mascota->getFechaNac());?>">
             </div>
             <div class="form-group">
                 <label for="id_especie">Especie</label>

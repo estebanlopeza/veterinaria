@@ -13,7 +13,6 @@
         </thead>
         <tbody>
           <?php
-          $servicioNegocio = new servicioNegocio();
           $arrayServicios = $servicioNegocio->listar();
           if( count($arrayServicios) > 0 ){
             foreach( $arrayServicios as $servicio ){

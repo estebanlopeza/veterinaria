@@ -1,5 +1,4 @@
 <?php 
-$mascotaNegocio = new mascotaNegocio();
 $arrayMascotas = $mascotaNegocio->listar();
 require_once('negocio/clienteNegocio.php');
 $clienteNegocio = new clienteNegocio();

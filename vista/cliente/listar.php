@@ -15,7 +15,6 @@
         </thead>
         <tbody>
           <?php
-          $clienteNegocio = new clienteNegocio();
           $arrayClientes = $clienteNegocio->listar();
           if( count($arrayClientes) > 0 ){
             foreach( $arrayClientes as $cliente ){

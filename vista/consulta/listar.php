@@ -27,7 +27,6 @@ $cliente = $clienteNegocio->recuperar($mascota->getIdCliente());
         </thead>
         <tbody>
           <?php
-          $consultaNegocio = new consultaNegocio();
           $arrayConsultas = $consultaNegocio->listar($_GET['idMascota']);
           if( count($arrayConsultas) > 0 ){
             foreach( $arrayConsultas as $consulta ){
