@@ -9,6 +9,7 @@
     ?>
     <div class="container">
       <div class="page-header">
+        <?php echo Util::getMsj(); ?>
         <h1><?php echo $txtAction; ?> Veterinario</h1>
       </div>
         <form role="form" method="post">

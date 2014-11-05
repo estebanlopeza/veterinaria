@@ -60,7 +60,7 @@ class clienteNegocio{
             $db = new clienteDb();
 
             if( $db->remove($cliente)){
-                Util::setMsj('El cliente <strong>'.$cliente->getNombre().'</strong> fue eliminado con exito','success');
+                Util::setMsj('El cliente <strong>'.$_POST['nombreApellido'].'</strong> fue eliminado con exito','success');
             }else{
                 Util::setMsj('Hubo un problema eliminando el cliente','danger');
             }

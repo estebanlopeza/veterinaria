@@ -27,8 +27,8 @@ require_once('util/util.php');
 
       <form class="form-signin" action="index.php" method="post" role="form">
         <h2 class="form-signin-heading">Veterinaria RdA</h2>
-        <input type="text" class="form-control" placeholder="Usuario" name="usuario" required autofocus>
-        <input type="password" class="form-control" placeholder="Contrase&ntilde;a" name="password" required>
+        <input type="text" class="form-control" placeholder="Usuario" name="user" required autofocus>
+        <input type="password" class="form-control" placeholder="Contrase&ntilde;a" name="pass" required>
         <!--
         <p><a href="#"> Olvid&eacute; mi contrase&ntilde;a</a></p>
         -->

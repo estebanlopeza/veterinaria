@@ -6,11 +6,11 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 require_once('util/util.php');
 
 
-if($_POST['usuario'] && $_POST['password']){
+if($_POST['user'] && $_POST['pass']){
     /*Login*/
     require_once('negocio/veterinarioNegocio.php');
     $veterinarioNegocio = new veterinarioNegocio();
-    $vet = $veterinarioNegocio->login($_POST['usuario'], $_POST['password']);
+    $vet = $veterinarioNegocio->login($_POST['user'], $_POST['pass']);
     if($vet){
         $_SESSION['veterinario']['id'] = $vet->getId();
         $_SESSION['veterinario']['nombre'] = $vet->getNombre();

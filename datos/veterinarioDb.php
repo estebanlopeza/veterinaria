@@ -63,10 +63,46 @@ class veterinarioDb extends Db{
         return $veterinario;
     }
 
+    public function checkVeterinario($veterinario){
+
+        $sql = "SELECT count(v.usuario) 
+        FROM veterinario AS v
+        WHERE v.usuario = '" . $veterinario->getUsuario() . "'";
+        
+        $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+
+        if($result->num_rows > 0){
+            return false;
+        }
+        else{
+            return true;
+        }   
+    }
+
+    public function insert($veterinario){
+
+        $sql = "INSERT INTO veterinario( nombre,
+                                         apellido,
+                                         matricula,
+                                         usuario,
+                                         password,
+                                         email)
+                VALUES ('" . $veterinario->getNombre() . "', 
+                        '" . $veterinario->getApellido() . "', 
+                         " . $veterinario->getMatricula() . ",
+                        '" . $veterinario->getUsuario() . "',
+                        '" . md5($veterinario->getPassword()) . "',
+                        '" . $veterinario->getEmail() . "' )";
+
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        $veterinario->setId( $this->mysqli->insert_id );
+        return $veterinario;
+    }
+
     public function remove($veterinario){
         $sql = "UPDATE veterinario SET eliminado = 1
                 WHERE id = " . $veterinario->getId();
-        $this->mysqli->query($sql) or die("Error ");
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         return true;
     }
 }

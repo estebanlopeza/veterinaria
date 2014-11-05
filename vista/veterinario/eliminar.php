@@ -11,6 +11,7 @@
       </div>
         <form role="form" method="post">
             <input type="hidden" name="id" value="<?php echo $veterinario->getId();?>" >
+
             <div class="form-group">
                 <label for="veterinario">Veterinario</label>
                 <input type="text" class="form-control" id="veterinario" name="veterinario" readonly placeholder="Veterinario" value="<?php echo $veterinario->getNombre().' '.$veterinario->getApellido().' ('.$veterinario->getUsuario().')';?>" >

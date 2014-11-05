@@ -15,7 +15,6 @@
         </thead>
         <tbody>
           <?php
-          $veterinarioNegocio = new veterinarioNegocio();
           $arrayVeterinarios = $veterinarioNegocio->listar();
           if( count($arrayVeterinarios) > 0 ){
             foreach( $arrayVeterinarios as $veterinario ){
