@@ -4,6 +4,7 @@
       ?>
     <div class="container">
       <div class="page-header">
+        <?php echo Util::getMsj(); ?>
         <h1>Gavet </h1>
       </div>
         <form role="form" method="post">
@@ -15,7 +16,6 @@
                 <label for="precioGavet">Nuevo Valor</label>
                 <input type="text" class="form-control" id="precioGavet" name="precioGavet" placeholder="Nuevo Valor">
             </div>
-            
             
             <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>

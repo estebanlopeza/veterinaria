@@ -26,11 +26,11 @@ class Veterinario{
 	private $apellido;
 
 	public function getApellido(){
-		return $this->apeliido;
+		return $this->apellido;
 	}
 
 	public function setApellido($apellido){
-		$this->apeliido = $apellido;
+		$this->apellido = $apellido;
 	}
 
 

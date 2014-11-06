@@ -35,6 +35,11 @@
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $veterinario ->getEmail();?>">
             </div>
+            
+            <?php if($_GET['id']){ ?>
+            <div class="alert alert-info" role="alert">Para cambiar su contraseña, complete los siguientes campos.<br>Para <strong>No</strong> cambiar su contraseña, <strong>No</strong> complete los siguientes campos.</div>
+            <?php } ?>
+
             <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" value="" >

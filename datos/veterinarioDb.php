@@ -6,7 +6,7 @@ class veterinarioDb extends Db{
 
     public function getOne($id){
         
-        $sql = "SELECT * 
+        $sql = "SELECT v.* 
                 FROM veterinario AS v
                 WHERE id = " . $id . "
                 LIMIT 1";
@@ -32,11 +32,13 @@ class veterinarioDb extends Db{
 
     public function login($user, $password){
         
-        $sql = "SELECT * 
+        $sql = "SELECT v.* 
                 FROM veterinario AS v
-                WHERE usuario = '" . $user . "'
-                AND password = '" . md5($password) . "'
+                WHERE v.usuario = '" . $user . "'
+                AND v.password = '" . md5($password) . "'
+                AND v.eliminado = 0
                 LIMIT 1";
+
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         if($result->num_rows > 0){
@@ -65,12 +67,10 @@ class veterinarioDb extends Db{
 
     public function checkVeterinario($veterinario){
 
-        $sql = "SELECT count(v.usuario) 
+        $sql = "SELECT v.*
         FROM veterinario AS v
         WHERE v.usuario = '" . $veterinario->getUsuario() . "'";
-        
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
-
         if($result->num_rows > 0){
             return false;
         }

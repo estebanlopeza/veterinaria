@@ -42,14 +42,13 @@ class veterinarioNegocio{
                     if( $db->insert($veterinario) instanceof veterinario ){
                         Util::setMsj('El veterinario fue insertado con éxito','success');
                     }else{
-                        }
                         Util::setMsj('Hubo un problema insertando el veterinario','danger');
-                    
+                        }
                     header('Location:?modulo=veterinario&accion=listar');
                     die();
                     }
                 else{
-                        Util::setMsj('Ese usuario ya existe','danger');
+                        Util::setMsj('El usuario <strong>'.$veterinario->getUsuario().'</strong> ya existe. Intente con otro usuario','danger');
                         return false;
                     }
                 }
