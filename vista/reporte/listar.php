@@ -2,18 +2,38 @@
 require_once('negocio/consultaNegocio.php');
 $consultaNegocio = new consultaNegocio();
 $consulta = $consultaNegocio->recuperar($_GET['idConsulta']);
+require_once('negocio/mascotaNegocio.php');
+$mascotaNegocio = new mascotaNegocio();
+$mascota = $mascotaNegocio->recuperar($consulta->getIdMascota());
+require_once('negocio/especieNegocio.php');
+$especieNegocio = new especieNegocio();
+$especie = $especieNegocio->recuperar($mascota->getIdEspecie());
+require_once('negocio/razaNegocio.php');
+$razaNegocio = new razaNegocio();
+$raza = $razaNegocio->recuperar($mascota->getIdRaza());
+require_once('negocio/clienteNegocio.php');
+$clienteNegocio = new clienteNegocio();
+$cliente = $clienteNegocio->recuperar($mascota->getIdCliente());
+require_once('negocio/servicioNegocio.php');
+$servicioNegocio = new servicioNegocio();
 ?>
     <div class="container">
       <div class="page-header">
-        <h1>Reporte</h1>
+        <h1>Reporte de consulta</h1>
       </div>
       <?php echo Util::getMsj(); ?>
-      <p>
-        Fecha: <strong><?php echo Util::DbToDate($consulta->getFecha()) ?></strong>
-      </p>
-      <p>
-        Cliente: <strong><?php echo Util::DbToDate($consulta->getFecha()) ?></strong>
-      </p>
+      <p><strong>Fecha:</strong> <?php echo Util::DbToDate($consulta->getFecha()) ?></p>
+
+      <h3>Ciente</h3>
+      <p><strong>Nombre:</strong> <?php echo $cliente->getApellido().', '.$cliente->getNombre() ?></p>
+      
+      <h3>Mascota</h3>
+      <p><strong>Nombre:</strong> <?php echo $mascota->getNombre() ?></p>
+      <p><strong>Especie:</strong> <?php echo $especie->getNombre() ?></p>
+      <p><strong>Raza:</strong> <?php echo $raza->getNombre() ?></p>
+      <p><strong>Fecha de nacimiento: </strong><?php echo Util::DbToDate($mascota->getFechaNac()) ?></p>
+      <p><strong>Peso:</strong> <?php echo $consulta->getPesoMascota() ?> Kgs.</p>
+
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -23,11 +43,24 @@ $consulta = $consultaNegocio->recuperar($_GET['idConsulta']);
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+        <?php 
+          $precioTotal = 0;
+          $itemsConsulta = $consulta->getItemsConsulta();
+          foreach ($itemsConsulta as $item) {
+            $precioTotal += $item['precioSugerido'];
+            echo '<tr>';
+              echo '<td>'.$servicioNegocio->recuperar($item['id_servicio'])->getNombre().'</td>';
+              echo '<td>'.$item['observacion'].'</td>';
+              echo '<td>$'.$item['precioSugerido'].'</td>';
+            echo '</tr>';
+          }
+        ?>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Precio sugerido total:</strong></td>
+            <td><strong>$<?php echo $precioTotal; ?></strong></td>
+          </tr>
+        </tfoot>
       </table>
     </div>

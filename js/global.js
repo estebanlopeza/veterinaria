@@ -3,7 +3,39 @@ $(function(){
     var removerServicio = function(e){
         e.preventDefault();
         $(this).closest('tr').remove();
-    } 
+    }
+
+    var showLoading = function(){
+        $('#loading').show();
+    }
+
+    var hideLoading = function(){
+        $('#loading').hide();
+    }
+
+    var generarModal = function(titulo, contenido){
+        if( !$('#miModal').length ){
+            $('<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog "><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h4 class="modal-title" id="myModalLabel">Modal title</h4></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button></div></div></div></div>').appendTo('html');
+            $('#miModal').on('show.bs.modal',hideLoading);
+        }
+        var modal = $('#miModal');
+        $('h4.modal-title',modal).html(titulo);
+        $('div.modal-body',modal).html(contenido);
+        modal.modal('show');
+    }
+
+    var mostrarConsulta = function(e){
+        e.preventDefault();
+        var $this = $(this);
+        showLoading();
+        $.get(
+            $this.attr('href'),
+            function(data){
+                var response = $("#reporte", data);
+                generarModal('Reporte de consulta', response);
+            }
+        );
+    }
 
 
     /*Tooltip*/
@@ -92,5 +124,7 @@ $(function(){
 
     $('.removeItemConsulta').on('click',removerServicio);
 
-});
+    /*Consultar consulta*/
+    $('.btnConsultar').on('click',mostrarConsulta);
 
+});

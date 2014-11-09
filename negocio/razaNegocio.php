@@ -9,6 +9,10 @@ class razaNegocio{
         return $db->getAll();
     }
   
+    public function recuperar($idRaza){
+        $db = new razaDb();
+        return $db->getOne($idRaza);
+    }
 }
 
 ?>

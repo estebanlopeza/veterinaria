@@ -49,17 +49,16 @@ if($_SESSION['veterinario']){
             case 'eliminar':
                 $$nombreNegocio->eliminar();
                 break;
+            case 'consultar':
+                break;
             default:
                 $accion = 'listar';
                 break;
         }
     }
 
-
     require_once('vista/inc/head.php');
-    if($accion){
-      require_once('vista/'.$modulo.'/'.$accion.'.php');  
-    }
+    require_once('vista/'.$modulo.'/'.$accion.'.php');
     require_once('vista/inc/foot.php'); 
 
 }else{

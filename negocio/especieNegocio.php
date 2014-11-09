@@ -9,9 +9,9 @@ class especieNegocio{
         return $db->getAll();
     }
   
-    public function recuperar(){
-        $db = new mascotaDb();       
-        return $db->getOne($_GET['id']);
+    public function recuperar($idEspecie){
+        $db = new especieDb();       
+        return $db->getOne($idEspecie);
     }
 }
 

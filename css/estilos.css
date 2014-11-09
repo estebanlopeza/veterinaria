@@ -45,6 +45,11 @@ body#login {
   padding-bottom: 15px;
 }
 
+/* modal */
+.modal-body{
+  font-size: 12px;
+}
+
 /* tablas */
 .table th:first-child,
 .table th:last-child{
@@ -75,17 +80,40 @@ table.dataTable thead .sorting {
   *cursor: hand;
 }
 table.dataTable thead .sorting {
-  background: url("../img/sort_both.png") no-repeat center right;
+  background: url("../img/sort_both.png") no-repeat center left;
 }
 table.dataTable thead .sorting_asc {
-  background: url("../img/sort_asc.png") no-repeat center right;
+  background: url("../img/sort_asc.png") no-repeat center left;
 }
 table.dataTable thead .sorting_desc {
-  background: url("../img/sort_desc.png") no-repeat center right;
+  background: url("../img/sort_desc.png") no-repeat center left;
 }
 table.dataTable thead .sorting_asc_disabled {
-  background: url("../img/sort_asc_disabled.png") no-repeat center right;
+  background: url("../img/sort_asc_disabled.png") no-repeat center left;
 }
 table.dataTable thead .sorting_desc_disabled {
-  background: url("../img/sort_desc_disabled.png") no-repeat center right;
+  background: url("../img/sort_desc_disabled.png") no-repeat center left;
+}
+
+/* Loading */
+#loading{
+  background: rgba(0,0,0,.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: none;
+}
+#loading p{
+  text-align: center;
+  margin: 10px auto;
+  font-weight: bold;
+}
+#loading-img{
+  width: 60px;
+  height: 64px;
+  margin: 30% auto 0;
+  background: url("../img/loader.gif") no-repeat center center;
 }
