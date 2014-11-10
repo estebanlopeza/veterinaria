@@ -46,13 +46,14 @@
             <div class="form-group">
                 <label for="id_raza">Raza</label>
                 <select class="form-control" id="idRaza" name="id_raza">
+                    <option value="" data-id-especie=""></option>
                     <?php
                     foreach ($arrayRaza as $raza) {
                         echo '<option value="'. $raza->getId() .'" ';
                         if($raza->getId() == $mascota->getIdRaza()){
                             echo "selected ";
                         }
-                        echo 'data-id-especie="'.$raza->getIdEspecie().'"';
+                        echo 'data-id-especie="'.$raza->getIdEspecie().'" ';
                         echo '>' . $raza->getNombre() . '</option>';
                     }
                     ?>

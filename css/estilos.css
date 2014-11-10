@@ -51,6 +51,16 @@ body#login {
 }
 
 /* tablas */
+
+.table-striped>tbody>tr.next>td{
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+.table-striped>tbody>tr.prev>td{
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+}
+
 .table th:first-child,
 .table th:last-child{
   width: 1px;

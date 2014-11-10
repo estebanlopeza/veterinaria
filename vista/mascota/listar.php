@@ -32,11 +32,12 @@ $cliente = $clienteNegocio->recuperar($_GET['idCliente']);
               <tr>
                 <td><?php echo $mascota->getId();?></td>
                 <td><?php echo $mascota->getNombre();?></td>
-                <td><?php echo $mascota->getFechaNac();?></td>
+                <td><?php echo Util::DbToDate($mascota->getFechaNac());?></td>
                 <td>
                   <a href="?modulo=mascota&accion=editar&id=<?php echo $mascota->getId();?>&idCliente=<?php echo $cliente->getId();?>" data-toggle="tooltip" title="Editar mascota"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
                   <a href="?modulo=mascota&accion=eliminar&id=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Eliminar mascota"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
-                  <a href="?modulo=consulta&accion=listar&idMascota=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Listar consultas"><span class="glyphicon glyphicon-list"></span></a>
+                  <a href="?modulo=consulta&accion=listar&idMascota=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Listar consultas"><span class="glyphicon glyphicon-list"></span></a>&nbsp;
+                  <a href="?modulo=alerta&accion=listar&idMascota=<?php echo $mascota->getId();?>" data-toggle="tooltip" title="Ver alertas"><span class="glyphicon glyphicon-exclamation-sign"></span></a>
                 </td>
               </tr>
           <?php

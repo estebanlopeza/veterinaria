@@ -14,7 +14,7 @@ class MascotaDb extends Db{
                 WHERE m.id = " . $id . "
                 LIMIT 1";
 
-        $result = $this->mysqli->query($sql) or die("Error ". $sql . mysqli_error($mysqli));
+        $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         
         $mascota = new Mascota( $result->fetch_assoc() );
         $result->free();

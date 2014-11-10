@@ -54,11 +54,21 @@ $(function(){
     $(".datepicker").datepicker({
         format: "dd/mm/yyyy",
         language: "es",
+        autoclose: true,
         todayHighlight: true
+    });
+
+    /*related select*/
+    $('select#idEspecie').on('change',function(){
+        var idEspecie = $(this).val(),
+            selectRaza = $('select#idRaza');
+        $('option',selectRaza).hide().filter('[data-id-especie="'+idEspecie+'"],[data-id-especie=""]').show();
+        selectRaza.val('');
     });
 
     /*DataTable*/
     $('#tableListar').DataTable({
+        "order": [ 0, 'desc' ],
         "language": {
             "lengthMenu"            : "Mostrar _MENU_ registros por página",
             "zeroRecords"           : "No se encontraron resultados",

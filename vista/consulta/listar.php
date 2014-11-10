@@ -33,7 +33,7 @@ $cliente = $clienteNegocio->recuperar($mascota->getIdCliente());
           ?>
               <tr>
                 <td><?php echo $consulta->getId();?></td>
-                <td><?php echo $consulta->getFecha();?></td>
+                <td><?php echo Util::DbToDate($consulta->getFecha());?></td>
                 <td>
                   <a href="?modulo=consulta&accion=editar&id=<?php echo $consulta->getId();?>&idMascota=<?php echo $_GET['idMascota'] ?>" data-toggle="tooltip" title="Editar consulta"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
                   <a href="?modulo=consulta&accion=eliminar&id=<?php echo $consulta->getId();?>&idMascota=<?php echo $_GET['idMascota'] ?>" data-toggle="tooltip" title="Eliminar consulta"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
