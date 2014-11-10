@@ -9,7 +9,7 @@
       ?>
     <div class="container">
       <div class="page-header">
-        <h1>Servicio <button type="button" class="btn btn-primary btn-sm" id="btn-agregar" name="btn-agregar">Agregar</button></h1>
+        <h1><?php echo $txtAction; ?> Servicio</h1>
       </div>
         <form role="form" method="post">
             <input type="hidden" name="id" value="<?php echo $servicio->getId();?>">

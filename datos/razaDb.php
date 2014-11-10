@@ -23,12 +23,40 @@ class razaDb extends Db{
         
         $sql = "SELECT r.*
                 FROM raza AS r
+                WHERE r.eliminado = 0
                 ORDER BY r.nombre ASC";
 
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         $array = $this->resourceToObjects($result,'Raza');
         $result->free();
         return $array;
+    }
+
+    public function update($raza){
+        
+        $sql = "UPDATE raza SET nombre = '" . $raza->getNombre() . "'
+                WHERE id = " . $raza->getId();
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        return $raza;
+    }
+
+    public function insert($raza){
+        
+        $sql = "INSERT INTO raza (nombre, 
+                                  id_especie)
+                VALUES ('" . $raza->getNombre() . "', 
+                         " . $raza->getIdEspecie() . " )";
+
+        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        $raza->setId( $this->mysqli->insert_id );
+        return $raza;
+    }
+
+    public function remove($raza){
+        $sql = "UPDATE raza SET eliminado = 1
+                WHERE id = " . $raza->getId();
+        $this->mysqli->query($sql) or die("Error ");
+        return true;
     }
 }
 ?>

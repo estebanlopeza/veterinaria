@@ -32,12 +32,15 @@ class Raza{
 		$this->idEspecie = $idEspecie;
 	}
 
-	public function __construct($array){
-		$this->setId($array['id']);
-	    $this->setNombre($array['nombre']);
-	    $this->setIdEspecie($array['id_especie']);
-    }
-
+	public function __construct($array = null){
+		if($array){
+			if($array['id']){
+				$this->setId($array['id']);
+			}
+	    	$this->setNombre($array['nombre']);
+	    	$this->setIdEspecie($array['id_especie']);
+    	}
+	}	
 }
 
 ?>

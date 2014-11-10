@@ -45,6 +45,13 @@
                 <li><a href="?modulo=servicio&accion=editar">Agregar servicio</a></li>
               </ul>
             </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Razas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="?modulo=raza&accion=listar">Listar razas</a></li>
+                <li><a href="?modulo=raza&accion=editar">Agregar raza</a></li>
+              </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
