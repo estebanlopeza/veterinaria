@@ -40,7 +40,7 @@ class consultaNegocio{
 	        	}
 	        }
           
-          header('Location:?modulo=consulta&accion=listar&idMascota=' . $consulta->getIdMascota());
+          header('Location:'.$datos['redirect']);
           die();
     	}else{
     	//si hay algun error, informar por pantalla

@@ -65,11 +65,11 @@ class veterinarioDb extends Db{
         return $veterinario;
     }
 
-    public function checkVeterinario($veterinario){
+    public function checkVeterinario($usuario){
 
         $sql = "SELECT v.*
         FROM veterinario AS v
-        WHERE v.usuario = '" . $veterinario->getUsuario() . "'";
+        WHERE v.usuario = '" . $usuario . "'";
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         if($result->num_rows > 0){
             return false;

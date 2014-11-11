@@ -32,7 +32,7 @@ $(function(){
             $this.attr('href'),
             function(data){
                 var response = $("#reporte", data);
-                generarModal('Reporte de consulta', response);
+                generarModal('Detalle de consulta', response);
             }
         );
     }
@@ -50,6 +50,20 @@ $(function(){
     	history.go(-1);
     });
 
+
+    /*Redireccionar submit*/
+    $('#submit a').on('click',function(e){
+        e.preventDefault();
+        var form = $('form#principal'),
+            $this = $(this);
+        if(!$('input#redirect').length){
+            $('<input type="hidden" name="redirect" id="redirect">').prependTo(form);
+        }
+        $('input#redirect').val($this.attr('href'));
+        form.trigger('submit');
+
+    });
+
     /*Datepicker*/
     $(".datepicker").datepicker({
         format: "dd/mm/yyyy",
@@ -64,27 +78,34 @@ $(function(){
             selectRaza = $('select#idRaza');
         $('option',selectRaza).hide().filter('[data-id-especie="'+idEspecie+'"],[data-id-especie=""]').show();
         selectRaza.val('');
-    });
+    }).trigger('change');
 
     /*DataTable*/
-    $('#tableListar').DataTable({
-        "order": [ 0, 'desc' ],
-        "language": {
-            "lengthMenu"            : "Mostrar _MENU_ registros por página",
-            "zeroRecords"           : "No se encontraron resultados",
-            "info"                  : "Mostrando página _PAGE_ de _PAGES_",
-            "infoEmpty"             : "No hay registros disponibles",
-            "infoFiltered"          : "(filtrado de _MAX_ registros totales)",
-            "sSearch"               : "",
-            "sSearchPlaceholder"    : 'Buscar',
-            "oPaginate"             : {
-                "sFirst"                : "Primero",
-                "sPrevious"             : "Anterior", 
-                "sNext"                 : "Siguiente",
-                "sLast"                 : "Último"
+    if(jQuery().DataTable) {
+        $('#tableListar').DataTable({
+            "order": [ 0, 'desc' ],
+            "language": {
+                "lengthMenu"            : "Mostrar _MENU_ registros por página",
+                "zeroRecords"           : "No se encontraron resultados",
+                "info"                  : "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty"             : "No hay registros disponibles",
+                "infoFiltered"          : "(filtrado de _MAX_ registros totales)",
+                "sSearch"               : "",
+                "sSearchPlaceholder"    : 'Buscar',
+                "oPaginate"             : {
+                    "sFirst"                : "Primero",
+                    "sPrevious"             : "Anterior", 
+                    "sNext"                 : "Siguiente",
+                    "sLast"                 : "Último"
+                }
             }
-        }
-    });
+        });
+    }
+
+    /*DataTable*/
+    if(jQuery().validator) {
+        $('form#principal').validator();
+    }
 
     /*Agregar Servicio*/
     $('#btnAgregarServicio').on('click',function(e){

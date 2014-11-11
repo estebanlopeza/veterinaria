@@ -19,6 +19,11 @@ class veterinarioNegocio{
         return $db->login($user,$password);
     }
 
+    public function validarUser($user){
+        $db = new veterinarioDb();
+        return $db->checkVeterinario($user);
+    }
+
    public function guardar(){
 
         //validar los campos recibidos por $_POST
@@ -38,7 +43,7 @@ class veterinarioNegocio{
                     header('Location:?modulo=veterinario&accion=listar');
                     die();
             }else{
-                if( $db->checkVeterinario($veterinario) ){ 
+                if( $db->checkVeterinario($veterinario->getUsuario()) ){ 
                     if( $db->insert($veterinario) instanceof veterinario ){
                         Util::setMsj('El veterinario fue insertado con éxito','success');
                     }else{

@@ -22,14 +22,15 @@
       <div class="page-header">
         <h1><?php echo $txtAction; ?> Consulta</h1>
       </div>
-        <form role="form" method="post">
+        <?php echo Util::getMsj(); ?>
+        <form role="form" method="post" id="principal">
             <input type="hidden" name="id" value="<?php echo $consulta->getId();?>" >
             <input type="hidden" name="id_mascota" value="<?php echo $_GET['idMascota'];?>" >
             <div class="form-group">
                 <label for="fecha">Fecha de consulta</label>
                 <p class="help-block">Formato dd/mm/yyyy.</p>
-                <input type="text" class="form-control datepicker" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>">
-
+                <input type="text" class="form-control datepicker" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="pesoMascota">Peso</label>
@@ -104,8 +105,16 @@
                 </div>
             </div>
 
-
-            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
-            <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
+            <button type="button" class="btn btn-default cancelForm">Cancelar</button>
+            <div class="btn-group dropup">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <?php echo $txtAction; ?> y... <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" id="submit">
+                <li><a href="?modulo=consulta&accion=listar&idMascota=<?php echo $_GET['idMascota'];?>">volver al listado</a></li>
+                <li><a href="?modulo=consulta&accion=editar&idMascota=<?php echo $_GET['idMascota'];?>">agregar otra consulta</a></li>
+                <li><a href="?modulo=alerta&accion=editar&idMascota=<?php echo $_GET['idMascota'];?>">agregar un alerta</a></li>
+              </ul>
+            </div>
         </form>
     </div>

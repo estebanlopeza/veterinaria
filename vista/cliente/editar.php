@@ -11,15 +11,17 @@
       <div class="page-header">
         <h1><?php echo $txtAction; ?> Cliente</h1>
       </div>
-        <form role="form" method="post">
+        <form role="form" method="post" id="principal">
             <input type="hidden" name="id" value="<?php echo $cliente->getId();?>" >
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $cliente->getNombre();?>" >
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $cliente->getNombre();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" value="<?php echo $cliente->getApellido();?>" >
+                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" value="<?php echo $cliente->getApellido();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="tipoDoc">Tipo de Documento</label>
@@ -32,22 +34,26 @@
             </div>
             <div class="form-group">
                 <label for="nroDoc">Numero de Documento</label>
-                <input type="text" class="form-control" id="nroDoc" name="nroDoc" placeholder="Numero de Documento" value="<?php echo $cliente ->getNroDoc();?>">
+                <input type="number" class="form-control" id="nroDoc" name="nroDoc" placeholder="Numero de Documento" value="<?php echo $cliente ->getNroDoc();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="direccion">Direccion</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" value="<?php echo $cliente ->getDireccion();?>">
+                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Direccion" value="<?php echo $cliente ->getDireccion();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="telefono">Telefono</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" value="<?php echo $cliente ->getTelefono();?>">
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" value="<?php echo $cliente ->getTelefono();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $cliente ->getEmail();?>">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $cliente ->getEmail();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             
-            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="button" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
         </form>
     </div>

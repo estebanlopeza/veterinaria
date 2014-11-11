@@ -11,11 +11,12 @@
       <div class="page-header">
         <h1><?php echo $txtAction; ?> Servicio</h1>
       </div>
-        <form role="form" method="post">
+        <form role="form" method="post" id="principal">
             <input type="hidden" name="id" value="<?php echo $servicio->getId();?>">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $servicio->getNombre();?>" >
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $servicio->getNombre();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
@@ -23,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label for="nroGAVET">Número de Gavet</label>
-                <input type="text" class="form-control" id="nroGAVET" name="nroGAVET" placeholder="Número de Gavet" value="<?php echo $servicio->getNroGavet();?>"  >
+                <input type="number" class="form-control" id="nroGAVET" name="nroGAVET" placeholder="Número de Gavet" value="<?php echo $servicio->getNroGavet();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             
             <button type="submit" class="btn btn-default cancelForm">Cancelar</button>

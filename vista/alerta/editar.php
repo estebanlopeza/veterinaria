@@ -25,13 +25,15 @@
       <div class="page-header">
         <h1><?php echo $txtAction; ?> Alerta</h1>
       </div>
-        <form role="form" method="post">
+      <?php echo Util::getMsj(); ?>
+        <form role="form" method="post" id="principal">
             <input type="hidden" name="id" value="<?php echo $alerta->getId();?>" >
             <input type="hidden" name="id_mascota" value="<?php echo $mascota->getId();?>" >
             <div class="form-group">
                 <label for="fechaNac">Fecha de alerta</label>
                 <p class="help-block">Formato dd/mm/yyyy.</p>
-                <input type="text" class="form-control datepicker" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>">
+                <input type="text" class="form-control datepicker" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="asunto">Mascota</label>
@@ -39,14 +41,17 @@
             </div>
             <div class="form-group">
                 <label for="asunto">Asunto</label>
-                <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto de la alerta" value="<?php echo $alerta->getAsunto();?>" >
+                <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Asunto de la alerta" value="<?php echo $alerta->getAsunto();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             <div class="form-group">
                 <label for="contenido">Mensaje</label>
-                <textarea class="form-control" id="contenido" name="contenido" rows="5"><?php echo $alerta->getContenido();?></textarea>
+                <textarea class="form-control" id="contenido" name="contenido" rows="5" required><?php echo $alerta->getContenido();?></textarea>
+                <div class="help-block with-errors"></div>
+
             </div>
             
-            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="button" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary"><?php echo $txtAction; ?></button>
         </form>
     </div>

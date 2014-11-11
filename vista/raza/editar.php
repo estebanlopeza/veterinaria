@@ -15,7 +15,7 @@
       <div class="page-header">
         <h1><?php echo $txtAction; ?> Raza</h1>
       </div>
-        <form role="form" method="post">
+        <form role="form" method="post" id="principal">
             <input type="hidden" name="id" value="<?php echo $raza->getId();?>">
 
             <div class="form-group">
@@ -39,7 +39,8 @@
       
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $raza->getNombre();?>" >
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $raza->getNombre();?>" required>
+                <div class="help-block with-errors"></div>
             </div>
             
             <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
