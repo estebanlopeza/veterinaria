@@ -31,11 +31,12 @@ class ClienteDb extends Db{
         return $array;
     }
 
-    public function checkCliente($nroDoc){
+    public function checkCliente($tipoDoc, $nroDoc){
 
         $sql = "SELECT c.*
         FROM cliente AS c
-        WHERE c.nroDoc = " . $nroDoc . "";
+        WHERE c.tipoDoc = '" . $tipoDoc . "'
+        AND c.nroDoc = " . $nroDoc . " ";
         $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
         if($result->num_rows > 0){
             return false;

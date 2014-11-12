@@ -34,7 +34,7 @@ class clienteNegocio{
 	        	}
 	        }
           else{
-            if( $db->checkCliente($cliente->getNroDoc()) ){
+            if( $db->checkCliente($cliente->getTipoDoc(), $cliente->getNroDoc()) ){
   	        	if( $db->insert($cliente) instanceof cliente ){
   	        		Util::setMsj('El cliente fue insertado con éxito','success');
   	        		header('Location:?modulo=cliente&accion=listar');
