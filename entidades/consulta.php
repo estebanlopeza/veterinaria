@@ -54,6 +54,17 @@ class Consulta{
 
 	}
 
+	private $externo;
+
+	public function getExterno(){
+		return $this->externo;
+	}
+
+	public function setExterno($externo){
+		$this->externo = $externo;
+
+	}
+
 	private $itemsConsulta;
 
 	public function getItemsConsulta(){
@@ -75,6 +86,7 @@ class Consulta{
 			$this->setPesoMascota($aux);
 			$this->setIdMascota($array['id_mascota']);
 			$this->setIdVeterinario($_SESSION['veterinario']['id']);
+			$this->setExterno( ($array['externo'] == ('on' || 1))? 1 : 0 );
 			$aux = array();
 			for ($i=0; $i<count($array['servicios']); $i++){ 
 				$aux[$i]['id_servicio'] = $array['servicios'][$i];

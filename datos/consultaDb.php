@@ -46,7 +46,9 @@ class ConsultaDb extends Db{
 
     public function update($consulta){
         
-        $sql = "UPDATE consulta SET pesoMascota = '" . $consulta->getPesoMascota() . "'
+        $sql = "UPDATE consulta SET 
+                    externo = " . $consulta->getExterno() . ", 
+                    pesoMascota = '" . $consulta->getPesoMascota() . "'
                 WHERE id = " . $consulta->getId() . " ";
 
         $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
@@ -69,13 +71,15 @@ class ConsultaDb extends Db{
         $sql = "INSERT INTO consulta( id_mascota,
                                       id_veterinario,
                                       fecha,
+                                      externo,
                                       pesoMascota)
                 VALUES ( " . $consulta->getIdMascota() . ", 
                          " . $consulta->getIdVeterinario() . ", 
                         '" . $consulta->getFecha() . "',
+                         " . $consulta->getExterno() . ",
                         '" . $consulta->getPesoMascota() . "' )";   
 
-        $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        $this->mysqli->query($sql) or die("Error " . $sql . mysqli_error($mysqli));
         $consulta->setId( $this->mysqli->insert_id );
 
         $itemsConsulta = $consulta->getItemsConsulta();

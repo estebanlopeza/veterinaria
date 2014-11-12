@@ -32,8 +32,14 @@
                 <input type="text" class="form-control datepicker" id="fecha" name="fecha" placeholder="dd/mm/yyyy" value="<?php echo $fecha;?>" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" required>
                 <div class="help-block with-errors"></div>
             </div>
+          <div class="checkbox">
+            <label for="externo">
+              <input type="checkbox" id="externo" name="externo" <?php if($consulta->getExterno()) echo 'checked'?>> Consulta externa
+            </label>
+            <p class="help-block">(Seleccione esta opción si la consulta fue realizada en otra veterinaria)</p>
+          </div>
             <div class="form-group">
-                <label for="pesoMascota">Peso</label>
+                <label for="pesoMascota">Peso de la mascota</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="pesoMascota" name="pesoMascota" placeholder="Peso" value="<?php echo $consulta->getPesoMascota();?>" >
                     <div class="input-group-addon">Kgs.</div>
