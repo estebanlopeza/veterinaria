@@ -33,7 +33,7 @@
                 <label for="nombre">Asunto</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" readonly value="<?php echo $alerta->getAsunto();?>" >
             </div>
-            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="button" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary">Eliminar</button>
         </form>
     </div>

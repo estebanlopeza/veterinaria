@@ -116,5 +116,6 @@
                 <li><a href="?modulo=alerta&accion=editar&idMascota=<?php echo $_GET['idMascota'];?>">agregar un alerta</a></li>
               </ul>
             </div>
+            <button type="submit" class="btn btn-primary hidden" id="submit-button"></button>
         </form>
     </div>

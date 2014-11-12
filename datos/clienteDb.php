@@ -31,6 +31,20 @@ class ClienteDb extends Db{
         return $array;
     }
 
+    public function checkCliente($nroDoc){
+
+        $sql = "SELECT c.*
+        FROM cliente AS c
+        WHERE c.nroDoc = " . $nroDoc . "";
+        $result = $this->mysqli->query($sql) or die("Error " . mysqli_error($mysqli));
+        if($result->num_rows > 0){
+            return false;
+        }
+        else{
+            return true;
+        }   
+    }
+
     public function update($cliente){
         
         $sql = "UPDATE cliente SET nombre = '" . $cliente->getNombre() . "', 

@@ -24,7 +24,7 @@ Util::setMsj('Está a punto de eliminar la siguiente raza:','warning',false);
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" readonly placeholder="Nombre" value="<?php echo $raza->getNombre();?>" >
             </div>
-            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="button" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary">Eliminar</button>
         </form>
     </div>

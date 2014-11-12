@@ -16,7 +16,7 @@
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" readonly value="<?php echo $mascota->getNombre();?>" >
             </div>            
-            <button type="submit" class="btn btn-default cancelForm">Cancelar</button>
+            <button type="button" class="btn btn-default cancelForm">Cancelar</button>
             <button type="submit" class="btn btn-primary">Eliminar</button>
         </form>
     </div>

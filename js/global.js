@@ -60,8 +60,7 @@ $(function(){
             $('<input type="hidden" name="redirect" id="redirect">').prependTo(form);
         }
         $('input#redirect').val($this.attr('href'));
-        form.trigger('submit');
-
+        $('#submit-button').trigger('click');
     });
 
     /*Datepicker*/
